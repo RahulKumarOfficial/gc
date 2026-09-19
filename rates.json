@@ -1,8 +1,8 @@
-[
-  { "name": "PlayStation (PSN) Card", "value": "RS 600", "time": "10 Mins" },
-  { "name": "Overwatch Coins", "value": "RS 600", "time": "15 Mins" },
-  { "name": "League of Legends", "value": "70% - 75%", "time": "15 Mins" },
-  { "name": "Roblox Gift Card", "value": "72% - 78%", "time": "10 Mins" },
-  { "name": "Croma Gift Voucher", "value": "80% - 85%", "time": "20 Mins" },
-  { "name": "Sea of Thieves Card", "value": "70% - 75%", "time": "15 Mins" }
-]
+{
+  "last_updated": "19 Sep 2026, 08:30 PM",
+  "cards": [
+    { "name": "Sony Playstation", "value": "80%", "time": "10-15 Min" },
+    { "name": "Flipkart", "value": "85%", "time": "5 Min" },
+    { "name": "Valorant", "value": "78%", "time": "10-15 Min" }
+  ]
+}
