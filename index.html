@@ -33,6 +33,7 @@
                     <a href="#hero" class="hover:text-indigo-600 transition">Home</a>
                     <a href="#cards-catalog" class="hover:text-indigo-600 transition">Gift Cards</a>
                     <a href="#rates" class="hover:text-indigo-600 transition">Today's Rates</a>
+                    <a href="#blog" class="hover:text-indigo-600 transition">Blog</a>
                 </nav>
 
                 <!-- Auth Buttons -->
@@ -59,6 +60,7 @@
             <a href="#hero" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">Home</a>
             <a href="#cards-catalog" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">Gift Cards</a>
             <a href="#rates" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">Today's Rates</a>
+            <a href="#blog" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">Blog</a>
             <div class="pt-2 border-t border-gray-100 flex gap-2">
                 <button onclick="openModal('loginModal')" class="w-1/2 text-center text-indigo-600 border border-indigo-600 py-2 rounded-lg font-semibold text-sm">Login</button>
                 <button onclick="openModal('registerModal')" class="w-1/2 text-center bg-indigo-600 text-white py-2 rounded-lg font-semibold text-sm">Register</button>
@@ -66,41 +68,32 @@
         </div>
     </header>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/919876543210?text=Hello%20GiftBuyer,%20mujhe%20apna%20gift%20card%20sell%20karna%20hai." 
-       target="_blank" 
-       class="fixed bottom-5 right-5 z-50 bg-green-500 hover:bg-green-600 text-white p-3.5 rounded-full shadow-2xl flex items-center justify-center transition-transform hover:scale-110 active:scale-95 group">
-        <i class="fa-brands fa-whatsapp text-3xl"></i>
-        <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 ease-in-out text-xs font-semibold pl-0 group-hover:pl-2">WhatsApp Chat</span>
+    <!-- Floating Round WhatsApp Icon Only -->
+    <a href="https://wa.me/919876543210?text=Hello%20GiftBuyer,%20mujhe%20apna%20gift%20card%20sell%20karna%20hai." target="_blank" class="fixed bottom-5 right-5 z-50 bg-green-500 hover:bg-green-600 text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-transform hover:scale-110 active:scale-95">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
     </a>
 
-    <!-- Hero Image Slider -->
-    <section id="hero" class="relative bg-gray-900 text-white overflow-hidden">
-        <div id="slider" class="flex transition-transform duration-500 ease-in-out w-full">
-            <div class="min-w-full relative h-64 sm:h-80 md:h-96">
-                <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=1200&auto=format&fit=crop" class="w-full h-full object-cover opacity-40" alt="PlayStation Offer">
-                <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-4">
-                    <span class="bg-indigo-600 text-white text-xs px-3 py-1 rounded-full font-bold uppercase mb-2">Highest Payout</span>
-                    <h1 class="text-2xl sm:text-4xl font-extrabold mb-2">Sell PlayStation & Gaming Cards</h1>
-                    <p class="text-sm sm:text-base text-gray-200 max-w-xl mb-4">Instant UPI Payout within 10-15 Minutes.</p>
-                    <a href="#cards-catalog" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold px-6 py-2.5 rounded-lg shadow">View Catalog</a>
-                </div>
+    <!-- Clean Image Banner Slider (Continuous Right-to-Left Slide) -->
+    <section id="hero" class="relative bg-gray-900 overflow-hidden">
+        <div id="slider" class="flex transition-transform duration-700 ease-in-out w-full">
+            <div class="min-w-full relative h-48 sm:h-64 md:h-80 lg:h-96 flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Banner 1">
             </div>
-            <div class="min-w-full relative h-64 sm:h-80 md:h-96">
-                <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=1200&auto=format&fit=crop" class="w-full h-full object-cover opacity-40" alt="Roblox Offer">
-                <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-4">
-                    <span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-bold uppercase mb-2">Best Rates</span>
-                    <h1 class="text-2xl sm:text-4xl font-extrabold mb-2">Roblox & Retail Gift Vouchers</h1>
-                    <p class="text-sm sm:text-base text-gray-200 max-w-xl mb-4">Best rates up to 85% Cash value guaranteed.</p>
-                    <a href="#rates" class="bg-white text-gray-900 hover:bg-gray-100 text-sm font-bold px-6 py-2.5 rounded-lg shadow">Check Rates</a>
-                </div>
+            <div class="min-w-full relative h-48 sm:h-64 md:h-80 lg:h-96 flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Banner 2">
+            </div>
+            <div class="min-w-full relative h-48 sm:h-64 md:h-80 lg:h-96 flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Banner 3">
+            </div>
+            <div class="min-w-full relative h-48 sm:h-64 md:h-80 lg:h-96 flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Banner 4">
             </div>
         </div>
 
-        <button onclick="prevSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/70">
+        <button onclick="prevSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/70 transition z-10">
             <i class="fa-solid fa-chevron-left"></i>
         </button>
-        <button onclick="nextSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/70">
+        <button onclick="nextSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/70 transition z-10">
             <i class="fa-solid fa-chevron-right"></i>
         </button>
     </section>
@@ -138,9 +131,8 @@
                     <div class="flex justify-between items-center mb-6 border-b pb-3">
                         <div>
                             <h2 class="text-xl sm:text-2xl font-bold text-gray-900">Supported Gift Cards</h2>
-                            <p class="text-xs sm:text-sm text-gray-500">Select brand & sell instantly</p>
+                            <p class="text-xs sm:text-sm text-gray-500">Select brand &amp; sell instantly</p>
                         </div>
-                        <span class="text-xs bg-indigo-100 text-indigo-700 px-2.5 py-1 rounded-full font-semibold">Updated Today</span>
                     </div>
 
                     <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
@@ -276,29 +268,60 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 pt-8 pb-6 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 text-sm">
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-gray-300 pt-10 pb-6 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-sm">
+            <!-- Brand Column -->
             <div>
-                <span class="text-xl font-bold text-white">Gift<span class="text-indigo-500">Buyer</span></span>
-                <p class="text-xs text-gray-400 mt-2">India's fast gift card cashout platform for gamers & retail card holders.</p>
+                <span class="text-xl font-bold text-white flex items-center gap-2 mb-2">
+                    <i class="fa-solid fa-credit-card text-indigo-500"></i>
+                    Gift<span class="text-indigo-500">Buyer</span>
+                </span>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                    India's trusted Gift Buyer (GiftBuyer) platform for buying and selling gaming and retail vouchers for instant cash.
+                </p>
             </div>
+
+            <!-- Quick Links Column -->
             <div>
-                <h4 class="text-white font-semibold mb-2 text-xs uppercase tracking-wider">Quick Links</h4>
-                <ul class="space-y-1 text-xs">
-                    <li><a href="#hero" class="hover:text-indigo-400">Home</a></li>
-                    <li><a href="#cards-catalog" class="hover:text-indigo-400">Gift Cards</a></li>
-                    <li><a href="#rates" class="hover:text-indigo-400">Today's Rates</a></li>
+                <h4 class="text-white font-semibold mb-3 text-xs uppercase tracking-wider border-b border-gray-800 pb-1">Quick Links</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><a href="#hero" class="hover:text-indigo-400 transition">Home</a></li>
+                    <li><a href="#cards-catalog" class="hover:text-indigo-400 transition">Supported Cards</a></li>
+                    <li><a href="#cards-catalog" class="hover:text-indigo-400 transition">Sell Gift Card</a></li>
+                    <li><a href="#rates" class="hover:text-indigo-400 transition">Buying Rates</a></li>
                 </ul>
             </div>
+
+            <!-- Legal & Support Column -->
             <div>
-                <h4 class="text-white font-semibold mb-2 text-xs uppercase tracking-wider">Contact</h4>
-                <p class="text-xs text-gray-400">WhatsApp: +91 99343 63941</p>
-                <p class="text-xs text-gray-400">Payouts: UPI, Google Pay, PhonePe</p>
+                <h4 class="text-white font-semibold mb-3 text-xs uppercase tracking-wider border-b border-gray-800 pb-1">Legal &amp; Support</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><a href="#about" class="hover:text-indigo-400 transition">About Gift Buyer</a></li>
+                    <li><a href="#contact" class="hover:text-indigo-400 transition">Contact Us</a></li>
+                    <li><a href="#terms" class="hover:text-indigo-400 transition">Terms &amp; Conditions</a></li>
+                    <li><a href="#privacy" class="hover:text-indigo-400 transition">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Get In Touch Column -->
+            <div>
+                <h4 class="text-white font-semibold mb-3 text-xs uppercase tracking-wider border-b border-gray-800 pb-1">Get In Touch</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-envelope text-indigo-400"></i>
+                        <span>support@giftbuyer.com</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-phone text-indigo-400"></i>
+                        <span>+91 99343 63941</span>
+                    </li>
+                </ul>
             </div>
         </div>
+
         <div class="border-t border-gray-800 text-center pt-4 text-xs text-gray-500">
-            &copy; 2026 GiftBuyer. All Rights Reserved.
+            © 2026 GiftBuyer (Gift Buyer). All Rights Reserved.
         </div>
     </footer>
 
@@ -397,16 +420,32 @@
         function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
         function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
 
-        // Hero Slider Script
-        let currentSlide = 0;
+        // Continuous Right-to-Left Infinite Loop Slider
         const slider = document.getElementById('slider');
-        const totalSlides = 2;
 
-        function updateSlider() { slider.style.transform = `translateX(-${currentSlide * 100}%)`; }
-        function nextSlide() { currentSlide = (currentSlide + 1) % totalSlides; updateSlider(); }
-        function prevSlide() { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; updateSlider(); }
+        function nextSlide() { 
+            slider.style.transition = 'transform 0.7s ease-in-out';
+            slider.style.transform = 'translateX(-100%)';
+            
+            setTimeout(() => {
+                slider.style.transition = 'none';
+                slider.appendChild(slider.firstElementChild);
+                slider.style.transform = 'translateX(0)';
+            }, 700);
+        }
 
-        setInterval(nextSlide, 4000);
+        function prevSlide() { 
+            slider.style.transition = 'none';
+            slider.insertBefore(slider.lastElementChild, slider.firstElementChild);
+            slider.style.transform = 'translateX(-100%)';
+            
+            setTimeout(() => {
+                slider.style.transition = 'transform 0.7s ease-in-out';
+                slider.style.transform = 'translateX(0)';
+            }, 20);
+        }
+
+        setInterval(nextSlide, 3500);
         
         document.addEventListener('DOMContentLoaded', renderRatesTable);
     </script>
