@@ -331,14 +331,15 @@
 
     <!-- JavaScript Data & Functional Script -->
     <script>
-        // Fetch JSON from an external file URL (e.g., 'rates.json' uploaded on your server)
+        // Fetch JSON with Cache-Busting parameter to ensure fresh data on every page reload
         async function renderRatesTable() {
             const ratesTableBody = document.getElementById('rates-table-body');
             const ratesLastUpdated = document.getElementById('rates-last-updated');
             ratesTableBody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-gray-500">Rates load ho rahe hain...</td></tr>`;
 
             try {
-                const response = await fetch('rates.json');
+                // Cache-Busting Fix: ?v=Date.now() browser cache bypass karta hai
+                const response = await fetch('rates.json?v=' + Date.now(), { cache: 'no-store' });
                 
                 if (!response.ok) {
                     throw new Error('JSON file load karne mein samasya aayi!');
