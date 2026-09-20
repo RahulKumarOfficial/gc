@@ -1,453 +1,736 @@
-<!DOCTYPE html>
-<html lang="hi" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gift Buyer - Sell Gift Cards Instant Cash</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
-        }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    </style>
-</head>
+
+<!DOCTYPE html><html lang="hi" class="scroll-smooth"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Gift Buyer - Sell Gift Cards Instant Cash</title>
+<!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+<!-- FontAwesome Icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>.gradient-bg {background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);}
+.no-scrollbar::-webkit-scrollbar {display: none;}
+.no-scrollbar {-ms-overflow-style: none;scrollbar-width: none;}
+
+/* =========================================================
+   GIFT CARD FULL EDGE-TO-EDGE FILL (LIKE RIGHT.JPG)
+========================================================= */
+#cards-catalog .grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important; /* Mobile: strictly 2 boxes */
+  gap: 0.75rem !important;
+  align-items: start !important;
+}
+
+/* Tablet & Desktop Layout */
+@media (min-width: 640px) {
+  #cards-catalog .grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important; /* Desktop auto-fit */
+    gap: 1rem !important;
+  }
+}
+
+#cards-catalog .grid > div {
+  width: 100% !important;
+  height: 190px !important;
+  min-height: 190px !important;
+  max-height: 190px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  border-radius: 0.75rem !important;
+}
+
+/* Image container - Full Width */
+#cards-catalog .grid > div > div:first-child {
+  width: 100% !important;
+  height: 145px !important;
+  min-height: 145px !important;
+  max-height: 145px !important;
+  flex: 0 0 145px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+/* Gift Card Image - Edge to Edge Stretch Fill */
+#cards-catalog .grid > div > div:first-child img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  max-height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Gift Card Name Footer */
+#cards-catalog .grid > div > div:last-child {
+  width: 100% !important;
+  height: 45px !important;
+  min-height: 45px !important;
+  max-height: 45px !important;
+  flex: 0 0 45px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+</style></head>
+
 <body class="bg-gray-50 font-sans text-gray-800 flex flex-col min-h-screen">
 
-    <!-- Header Navigation -->
-    <header class="bg-white shadow-sm sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <a href="#" class="flex items-center space-x-2">
-                    <i class="fa-solid fa-credit-card text-indigo-600 text-2xl"></i>
-                    <span class="text-2xl font-bold text-gray-900">Gift<span class="text-indigo-600">Buyer</span></span>
-                </a>
+<!-- =========================================================HEADER========================================================= -->
+<header class="bg-white shadow-sm sticky top-0 z-40">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<!-- Logo --><a href="#" class="flex items-center space-x-2">
+<i class="fa-solid fa-credit-card text-indigo-600 text-2xl"></i>
+<span class="text-2xl font-bold text-gray-900">Gift<span class="text-indigo-600">Buyer</span></span>
+</a>
 
-                <!-- Navigation Links -->
-                <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-700">
-                    <a href="#hero" class="hover:text-indigo-600 transition">Home</a>
-                    <a href="#cards-catalog" class="hover:text-indigo-600 transition">Gift Cards</a>
-                    <a href="#rates" class="hover:text-indigo-600 transition">Today's Rates</a>
-                    <a href="#blog" class="hover:text-indigo-600 transition">Blog</a>
-                </nav>
+<!-- Navigation Links --><nav class="hidden md:flex space-x-4 lg:space-x-8 text-sm font-medium text-gray-700">
+<a href="#hero" class="hover:text-indigo-600 transition">Home</a>
+<a href="#cards-catalog" class="hover:text-indigo-600 transition">Gift Cards</a>
+<a href="#rates" class="hover:text-indigo-600 transition">Today's Rates</a>
+<a href="#faq" class="hover:text-indigo-600 transition">FAQ</a>
+<a href="#article-box" class="hover:text-indigo-600 transition">About</a>
+</nav>
 
-                <!-- Auth Buttons -->
-                <div class="hidden lg:flex items-center space-x-3">
-                    <button onclick="openModal('loginModal')" class="text-indigo-600 border border-indigo-600 hover:bg-indigo-50 px-4 py-1.5 rounded-lg text-sm font-semibold transition">
-                        Login
-                    </button>
-                    <button onclick="openModal('registerModal')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-1.5 rounded-lg text-sm font-semibold shadow transition">
-                        Register
-                    </button>
-                </div>
+<!-- Auth Buttons --><div class="hidden md:flex items-center space-x-2 lg:space-x-3">
+<button onclick="openModal('loginModal')" class="text-indigo-600 border border-indigo-600 hover:bg-indigo-50 px-3 lg:px-4 py-1.5 rounded-lg text-sm font-semibold transition">Login</button>
+<button onclick="openModal('registerModal')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 lg:px-4 py-1.5 rounded-lg text-sm font-semibold shadow transition">Register</button>
+</div>
 
-                <!-- Mobile Hamburger Button -->
-                <div class="flex md:hidden items-center">
-                    <button id="menuBtn" class="text-gray-700 focus:outline-none p-2 text-xl">
-                        <i class="fa-solid fa-bars"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
+<!-- Mobile Hamburger Button --><div class="flex md:hidden items-center">
+<button id="menuBtn" class="text-gray-700 focus:outline-none p-2 text-xl">
+<i class="fa-solid fa-bars"></i>
+</button>
+</div>
+</div>
+</div>
 
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200 px-4 pt-2 pb-4 space-y-2">
-            <a href="#hero" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">Home</a>
-            <a href="#cards-catalog" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">Gift Cards</a>
-            <a href="#rates" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">Today's Rates</a>
-            <a href="#blog" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">Blog</a>
-            <div class="pt-2 border-t border-gray-100 flex gap-2">
-                <button onclick="openModal('loginModal')" class="w-1/2 text-center text-indigo-600 border border-indigo-600 py-2 rounded-lg font-semibold text-sm">Login</button>
-                <button onclick="openModal('registerModal')" class="w-1/2 text-center bg-indigo-600 text-white py-2 rounded-lg font-semibold text-sm">Register</button>
-            </div>
-        </div>
-    </header>
+<!-- Mobile Menu --><div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200 px-4 pt-2 pb-4 space-y-2">
+<a href="#hero" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">Home</a>
+<a href="#cards-catalog" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">Gift Cards</a>
+<a href="#rates" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">Today's Rates</a>
+<a href="#faq" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">FAQ</a>
+<a href="#article-box" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">About</a>
 
-    <!-- Floating Round WhatsApp Icon Only -->
-    <a href="https://wa.me/919876543210?text=Hello%20GiftBuyer,%20mujhe%20apna%20gift%20card%20sell%20karna%20hai." target="_blank" class="fixed bottom-5 right-5 z-50 bg-green-500 hover:bg-green-600 text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-transform hover:scale-110 active:scale-95">
-        <i class="fa-brands fa-whatsapp text-2xl"></i>
-    </a>
+<div class="pt-2 border-t border-gray-100 flex gap-2">
+<button onclick="openModal('loginModal')" class="w-1/2 text-center text-indigo-600 border border-indigo-600 py-2 rounded-lg font-semibold text-sm">Login</button>
+<button onclick="openModal('registerModal')" class="w-1/2 text-center bg-indigo-600 text-white py-2 rounded-lg font-semibold text-sm">Register</button>
+</div>
+</div>
+</header>
 
-    <!-- Clean Image Banner Slider (Continuous Right-to-Left Slide) -->
-    <section id="hero" class="relative bg-gray-900 overflow-hidden">
-        <div id="slider" class="flex transition-transform duration-700 ease-in-out w-full">
-            <div class="min-w-full relative h-48 sm:h-64 md:h-80 lg:h-96 flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Banner 1">
-            </div>
-            <div class="min-w-full relative h-48 sm:h-64 md:h-80 lg:h-96 flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Banner 2">
-            </div>
-            <div class="min-w-full relative h-48 sm:h-64 md:h-80 lg:h-96 flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Banner 3">
-            </div>
-            <div class="min-w-full relative h-48 sm:h-64 md:h-80 lg:h-96 flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Banner 4">
-            </div>
-        </div>
 
-        <button onclick="prevSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/70 transition z-10">
-            <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <button onclick="nextSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/70 transition z-10">
-            <i class="fa-solid fa-chevron-right"></i>
-        </button>
-    </section>
+<!-- =========================================================WHATSAPP FLOATING BUTTON========================================================= -->
+<a href="https://wa.me/919876543210?text=Hello%20GiftBuyer,%20mujhe%20apna%20gift%20card%20sell%20karna%20hai." target="_blank" class="fixed bottom-5 right-5 z-50 bg-green-500 hover:bg-green-600 text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-transform hover:scale-110 active:scale-95">
+<i class="fa-brands fa-whatsapp text-2xl"></i>
+</a>
 
-    <!-- Main Container -->
-    <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 py-6 flex-grow w-full">
-        <div class="flex flex-col lg:flex-row gap-8">
 
-            <!-- Main Content Area (Left) -->
-            <main class="w-full lg:w-3/4 space-y-8">
+<!-- =========================================================BANNER SLIDER========================================================= -->
+<section id="hero" class="relative bg-gray-900 overflow-hidden">
+<div id="slider" class="flex transition-transform duration-700 ease-in-out w-full">
 
-                <!-- SAME ROW LAYOUT FOR BOTH MOBILE & PC -->
-                <div class="grid grid-cols-3 gap-1.5 sm:gap-4">
-                    <!-- 1. Sell Gift Card -->
-                    <a href="#cards-catalog" class="flex flex-row items-center justify-center gap-1 sm:gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 sm:py-3 px-1 sm:px-4 rounded-xl shadow-md text-[10px] xs:text-xs sm:text-sm transition active:scale-95 whitespace-nowrap">
-                        <i class="fa-solid fa-bolt text-yellow-300 text-xs sm:text-base"></i>
-                        <span>Sell Gift Card</span>
-                    </a>
-                    
-                    <!-- 2. Check Order Status -->
-                    <a href="status-check.html" class="flex flex-row items-center justify-center gap-1 sm:gap-2 bg-white hover:bg-indigo-50 text-indigo-950 font-bold py-2 sm:py-3 px-1 sm:px-4 rounded-xl border border-indigo-200 shadow-sm text-[10px] xs:text-xs sm:text-sm transition active:scale-95 whitespace-nowrap">
-                        <i class="fa-solid fa-magnifying-glass text-indigo-600 text-xs sm:text-base"></i>
-                        <span>Check Status</span>
-                    </a>
-                    
-                    <!-- 3. Price List -->
-                    <a href="#rates" class="flex flex-row items-center justify-center gap-1 sm:gap-2 bg-white hover:bg-indigo-50 text-indigo-950 font-bold py-2 sm:py-3 px-1 sm:px-4 rounded-xl border border-indigo-200 shadow-sm text-[10px] xs:text-xs sm:text-sm transition active:scale-95 whitespace-nowrap">
-                        <i class="fa-solid fa-list-check text-green-600 text-xs sm:text-base"></i>
-                        <span>Price List</span>
-                    </a>
-                </div>
+<div class="min-w-full relative h-48 sm:h-64 md:h-80 lg:h-96 flex-shrink-0">
+<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Banner 1">
+</div>
 
-                <!-- STATIC CATALOG SECTION -->
-                <section id="cards-catalog">
-                    <div class="flex justify-between items-center mb-6 border-b pb-3">
-                        <div>
-                            <h2 class="text-xl sm:text-2xl font-bold text-gray-900">Supported Gift Cards</h2>
-                            <p class="text-xs sm:text-sm text-gray-500">Select brand &amp; sell instantly</p>
-                        </div>
-                    </div>
+<div class="min-w-full relative h-48 sm:h-64 md:h-80 lg:h-96 flex-shrink-0">
+<img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Banner 2">
+</div>
 
-                    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                        
-                        <!-- Card 1: Sony Playstation -->
-                        <div onclick="sellCardWhatsApp('Sony Playstation')" class="cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col justify-between text-center hover:shadow-md transition">
-                            <div class="p-4 flex items-center justify-center flex-grow h-32">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/PlayStation_logo.svg" alt="Sony Playstation" class="max-h-full max-w-full object-contain">
-                            </div>
-                            <div class="bg-sky-50 py-2.5 px-2 text-xs font-bold text-gray-900 border-t border-sky-100 uppercase tracking-wide">
-                                Sony Playstation
-                            </div>
-                        </div>
+<div class="min-w-full relative h-48 sm:h-64 md:h-80 lg:h-96 flex-shrink-0">
+<img src="https://images.unsplash.com/photo-1550745165-9bc0b2527263?w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Banner 3">
+</div>
 
-                        <!-- Card 2: Flipkart -->
-                        <div onclick="sellCardWhatsApp('Flipkart')" class="cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col justify-between text-center hover:shadow-md transition">
-                            <div class="p-4 flex items-center justify-center flex-grow h-32">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Flipkart_logo.svg" alt="Flipkart" class="max-h-full max-w-full object-contain">
-                            </div>
-                            <div class="bg-sky-50 py-2.5 px-2 text-xs font-bold text-gray-900 border-t border-sky-100 uppercase tracking-wide">
-                                Flipkart
-                            </div>
-                        </div>
+<div class="min-w-full relative h-48 sm:h-64 md:h-80 lg:h-96 flex-shrink-0">
+<img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Banner 4">
+</div>
+</div>
 
-                        <!-- Card 3: Valorant -->
-                        <div onclick="sellCardWhatsApp('Valorant')" class="cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col justify-between text-center hover:shadow-md transition">
-                            <div class="p-4 flex items-center justify-center flex-grow h-32">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Valorant_logo_-_Vector.svg" alt="Valorant" class="max-h-full max-w-full object-contain">
-                            </div>
-                            <div class="bg-sky-50 py-2.5 px-2 text-xs font-bold text-gray-900 border-t border-sky-100 uppercase tracking-wide">
-                                Valorant
-                            </div>
-                        </div>
+<button onclick="prevSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/70 transition z-10">
+<i class="fa-solid fa-chevron-left"></i>
+</button>
 
-                        <!-- Card 4: Bata -->
-                        <div onclick="sellCardWhatsApp('Bata')" class="cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col justify-between text-center hover:shadow-md transition">
-                            <div class="p-4 flex items-center justify-center flex-grow h-32">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Bata_logo.svg" alt="Bata" class="max-h-full max-w-full object-contain">
-                            </div>
-                            <div class="bg-sky-50 py-2.5 px-2 text-xs font-bold text-gray-900 border-t border-sky-100 uppercase tracking-wide">
-                                Bata
-                            </div>
-                        </div>
+<button onclick="nextSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/70 transition z-10">
+<i class="fa-solid fa-chevron-right"></i>
+</button>
+</section>
 
-                        <!-- Card 5: Roblox -->
-                        <div onclick="sellCardWhatsApp('Roblox')" class="cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col justify-between text-center hover:shadow-md transition">
-                            <div class="p-4 flex items-center justify-center flex-grow h-32">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_2022.svg" alt="Roblox" class="max-h-full max-w-full object-contain">
-                            </div>
-                            <div class="bg-sky-50 py-2.5 px-2 text-xs font-bold text-gray-900 border-t border-sky-100 uppercase tracking-wide">
-                                Roblox
-                            </div>
-                        </div>
 
-                        <!-- Card 6: Croma -->
-                        <div onclick="sellCardWhatsApp('Croma')" class="cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col justify-between text-center hover:shadow-md transition">
-                            <div class="p-4 flex items-center justify-center flex-grow h-32">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Croma_Logo.png" alt="Croma" class="max-h-full max-w-full object-contain">
-                            </div>
-                            <div class="bg-sky-50 py-2.5 px-2 text-xs font-bold text-gray-900 border-t border-sky-100 uppercase tracking-wide">
-                                Croma
-                            </div>
-                        </div>
+<!-- =========================================================MAIN CONTAINER========================================================= -->
+<div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 py-6 flex-grow w-full space-y-8">
+<div class="flex flex-col lg:flex-row gap-8">
 
-                    </div>
-                </section>
+<!-- MAIN CONTENT --><main class="w-full lg:w-3/4 space-y-8">
 
-                <!-- Dynamic Buying Rates Table Section -->
-                <section id="rates" class="bg-white p-4 sm:p-6 rounded-xl shadow-sm border border-gray-200">
-                    <div class="mb-4 border-b pb-3 flex justify-between items-center flex-wrap gap-2">
-                        <div>
-                            <div class="flex items-center gap-2 flex-wrap">
-                                <h2 class="text-xl font-bold text-gray-900">Gift Buyer Buying Rates</h2>
-                                <!-- Color Badge for Dynamic Date -->
-                                <span id="rates-date-badge" class="bg-green-100 text-green-800 border border-green-200 text-xs font-semibold px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
-                                    <i class="fa-regular fa-clock text-green-600"></i>
-                                    <span id="rates-last-updated">Date Fetching...</span>
-                                </span>
-                            </div>
-                            <p class="text-xs text-gray-500 mt-0.5">Live updated payout percentages for your gift cards</p>
-                        </div>
-                    </div>
+<!-- QUICK ACTION BUTTONS --><div class="grid grid-cols-3 gap-1.5 sm:gap-4">
+<a href="#cards-catalog" class="flex flex-row items-center justify-center gap-1 sm:gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 sm:py-3 px-1 sm:px-4 rounded-xl shadow-md text-[10px] xs:text-xs sm:text-sm transition active:scale-95 whitespace-nowrap">
+<i class="fa-solid fa-bolt text-yellow-300 text-xs sm:text-base"></i>
+<span>Sell Gift Card</span>
+</a>
 
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="bg-gray-100 border-b text-gray-700 text-xs sm:text-sm">
-                                    <th class="p-2.5 font-semibold">Card Name</th>
-                                    <th class="p-2.5 font-semibold">Payout Rate</th>
-                                    <th class="p-2.5 font-semibold">Est. Speed</th>
-                                </tr>
-                            </thead>
-                            <tbody id="rates-table-body" class="divide-y divide-gray-200 text-xs sm:text-sm">
-                                <!-- Table Rows render dynamically via fetch -->
-                            </tbody>
-                        </table>
-                    </div>
-                    <p class="text-[11px] text-gray-400 mt-3">* Payout rates depend on market conditions and card denomination.</p>
-                </section>
+<a href="status-check.html" class="flex flex-row items-center justify-center gap-1 sm:gap-2 bg-white hover:bg-indigo-50 text-indigo-950 font-bold py-2 sm:py-3 px-1 sm:px-4 rounded-xl border border-indigo-200 shadow-sm text-[10px] xs:text-xs sm:text-sm transition active:scale-95 whitespace-nowrap">
+<i class="fa-solid fa-magnifying-glass text-indigo-600 text-xs sm:text-base"></i>
+<span>Check Status</span>
+</a>
 
-            </main>
+<a href="#rates" class="flex flex-row items-center justify-center gap-1 sm:gap-2 bg-white hover:bg-indigo-50 text-indigo-950 font-bold py-2 sm:py-3 px-1 sm:px-4 rounded-xl border border-indigo-200 shadow-sm text-[10px] xs:text-xs sm:text-sm transition active:scale-95 whitespace-nowrap">
+<i class="fa-solid fa-list-check text-green-600 text-xs sm:text-base"></i>
+<span>Price List</span>
+</a>
+</div>
 
-            <!-- PC Sidebar (Right) -->
-            <aside class="w-full lg:w-1/4 space-y-6">
-                <div class="bg-gradient-to-br from-indigo-600 to-purple-700 text-white rounded-xl p-5 shadow-md">
-                    <h3 class="text-lg font-bold mb-2 flex items-center gap-2">
-                        <i class="fa-solid fa-bolt text-yellow-300"></i> Direct Instant Sell
-                    </h3>
-                    <p class="text-xs text-indigo-100 mb-4">WhatsApp par card details bhejein aur instant payment paayein.</p>
-                    <a href="https://wa.me/919876543210?text=Hello,%20mujhe%20gift%20card%20sell%20karna%20hai" target="_blank" class="block text-center bg-green-500 hover:bg-green-600 text-white font-bold py-2.5 rounded-lg text-sm shadow transition">
-                        <i class="fa-brands fa-whatsapp mr-1 text-base"></i> Sell via WhatsApp
-                    </a>
-                </div>
 
-                <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200">
-                    <h4 class="text-sm font-bold text-gray-900 mb-3 uppercase tracking-wider">Instant Payout Methods</h4>
-                    <div class="grid grid-cols-2 gap-2 text-xs font-semibold text-gray-600">
-                        <div class="bg-gray-100 p-2 rounded text-center border">Google Pay</div>
-                        <div class="bg-gray-100 p-2 rounded text-center border">PhonePe</div>
-                        <div class="bg-gray-100 p-2 rounded text-center border">Paytm UPI</div>
-                        <div class="bg-gray-100 p-2 rounded text-center border">Bank Transfer</div>
-                    </div>
-                </div>
+<!-- =====================================================GIFT CARD CATALOG===================================================== -->
+<section id="cards-catalog">
 
-                <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200 text-center">
-                    <i class="fa-solid fa-headset text-3xl text-indigo-600 mb-2"></i>
-                    <h4 class="text-base font-bold text-gray-900">Need Help?</h4>
-                    <p class="text-xs text-gray-500 mt-1 mb-3">Live chat support is available 24/7</p>
-                    <p class="text-xs font-semibold text-indigo-600">+91 99343 63941</p>
-                </div>
-            </aside>
+<div class="flex justify-between items-center mb-6 border-b pb-3">
+<div>
+<h2 class="text-xl sm:text-2xl font-bold text-gray-900">Supported Gift Cards</h2>
+<p class="text-xs sm:text-sm text-gray-500">Select brand & sell instantly</p>
+</div>
+</div>
 
-        </div>
-    </div>
+<div class="grid">
 
-    <!-- Footer Section -->
-    <footer class="bg-gray-900 text-gray-300 pt-10 pb-6 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-sm">
-            <!-- Brand Column -->
-            <div>
-                <span class="text-xl font-bold text-white flex items-center gap-2 mb-2">
-                    <i class="fa-solid fa-credit-card text-indigo-500"></i>
-                    Gift<span class="text-indigo-500">Buyer</span>
-                </span>
-                <p class="text-xs text-gray-400 leading-relaxed">
-                    India's trusted Gift Buyer (GiftBuyer) platform for buying and selling gaming and retail vouchers for instant cash.
-                </p>
-            </div>
+<!-- CARD 1 (SONY PLAYSTATION) --><div onclick="sellCardWhatsApp('Sony Playstation')" class="cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col justify-between text-center hover:shadow-md transition">
+<div class="w-full p-0 m-0 flex items-center justify-center overflow-hidden">
+<img src="https://media.buysellvouchers.com/images/product-images/Gift_cards-PlayStation_network_aka_psn.png" alt="Sony Playstation" class="w-full h-full object-cover p-0 m-0 block">
+</div>
 
-            <!-- Quick Links Column -->
-            <div>
-                <h4 class="text-white font-semibold mb-3 text-xs uppercase tracking-wider border-b border-gray-800 pb-1">Quick Links</h4>
-                <ul class="space-y-2 text-xs text-gray-400">
-                    <li><a href="#hero" class="hover:text-indigo-400 transition">Home</a></li>
-                    <li><a href="#cards-catalog" class="hover:text-indigo-400 transition">Supported Cards</a></li>
-                    <li><a href="#cards-catalog" class="hover:text-indigo-400 transition">Sell Gift Card</a></li>
-                    <li><a href="#rates" class="hover:text-indigo-400 transition">Buying Rates</a></li>
-                </ul>
-            </div>
+<div class="bg-sky-50 py-2.5 px-2 text-xs font-bold text-gray-900 border-t border-sky-100 uppercase tracking-wide truncate">
+Sony Playstation
+</div>
+</div>
 
-            <!-- Legal & Support Column -->
-            <div>
-                <h4 class="text-white font-semibold mb-3 text-xs uppercase tracking-wider border-b border-gray-800 pb-1">Legal &amp; Support</h4>
-                <ul class="space-y-2 text-xs text-gray-400">
-                    <li><a href="#about" class="hover:text-indigo-400 transition">About Gift Buyer</a></li>
-                    <li><a href="#contact" class="hover:text-indigo-400 transition">Contact Us</a></li>
-                    <li><a href="#terms" class="hover:text-indigo-400 transition">Terms &amp; Conditions</a></li>
-                    <li><a href="#privacy" class="hover:text-indigo-400 transition">Privacy Policy</a></li>
-                </ul>
-            </div>
 
-            <!-- Get In Touch Column -->
-            <div>
-                <h4 class="text-white font-semibold mb-3 text-xs uppercase tracking-wider border-b border-gray-800 pb-1">Get In Touch</h4>
-                <ul class="space-y-2 text-xs text-gray-400">
-                    <li class="flex items-center gap-2">
-                        <i class="fa-solid fa-envelope text-indigo-400"></i>
-                        <span>support@giftbuyer.com</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fa-solid fa-phone text-indigo-400"></i>
-                        <span>+91 99343 63941</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<!-- CARD 2 --><div onclick="sellCardWhatsApp('Flipkart')" class="cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col justify-between text-center hover:shadow-md transition">
+<div class="w-full p-0 m-0 flex items-center justify-center overflow-hidden">
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Flipkart_logo.svg" alt="Flipkart" class="w-full h-full object-cover p-0 m-0 block">
+</div>
 
-        <div class="border-t border-gray-800 text-center pt-4 text-xs text-gray-500">
-            © 2026 GiftBuyer (Gift Buyer). All Rights Reserved.
-        </div>
-    </footer>
+<div class="bg-sky-50 py-2.5 px-2 text-xs font-bold text-gray-900 border-t border-sky-100 uppercase tracking-wide truncate">
+Flipkart
+</div>
+</div>
 
-    <!-- Login Modal -->
-    <div id="loginModal" class="fixed inset-0 bg-black/60 hidden z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-xl shadow-xl w-full max-w-sm p-5 relative">
-            <button onclick="closeModal('loginModal')" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-lg"></i></button>
-            <h3 class="text-xl font-bold mb-3 text-gray-900">Login</h3>
-            <form class="space-y-3" onsubmit="event.preventDefault(); closeModal('loginModal');">
-                <input type="text" placeholder="Mobile / Email" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
-                <input type="password" placeholder="Password" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
-                <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-2 rounded-lg text-sm shadow">Login</button>
-            </form>
-        </div>
-    </div>
 
-    <!-- Register Modal -->
-    <div id="registerModal" class="fixed inset-0 bg-black/60 hidden z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-xl shadow-xl w-full max-w-sm p-5 relative">
-            <button onclick="closeModal('registerModal')" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-lg"></i></button>
-            <h3 class="text-xl font-bold mb-3 text-gray-900">Register</h3>
-            <form class="space-y-3" onsubmit="event.preventDefault(); closeModal('registerModal');">
-                <input type="text" placeholder="Full Name" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
-                <input type="tel" placeholder="Mobile Number" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
-                <input type="password" placeholder="Password" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
-                <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-2 rounded-lg text-sm shadow">Register</button>
-            </form>
-        </div>
-    </div>
+<!-- CARD 3 --><div onclick="sellCardWhatsApp('Valorant')" class="cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col justify-between text-center hover:shadow-md transition">
+<div class="w-full p-0 m-0 flex items-center justify-center overflow-hidden">
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Valorant_logo_-_Vector.svg" alt="Valorant" class="w-full h-full object-cover p-0 m-0 block">
+</div>
 
-    <!-- JavaScript Data & Functional Script -->
-    <script>
-        // Fetch JSON with Cache-Busting parameter to ensure fresh data on every page reload
-        async function renderRatesTable() {
-            const ratesTableBody = document.getElementById('rates-table-body');
-            const ratesLastUpdated = document.getElementById('rates-last-updated');
-            ratesTableBody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-gray-500">Rates load ho rahe hain...</td></tr>`;
+<div class="bg-sky-50 py-2.5 px-2 text-xs font-bold text-gray-900 border-t border-sky-100 uppercase tracking-wide truncate">
+Valorant
+</div>
+</div>
 
-            try {
-                // Cache-Busting Fix: ?v=Date.now() browser cache bypass karta hai
-                const response = await fetch('rates.json?v=' + Date.now(), { cache: 'no-store' });
-                
-                if (!response.ok) {
-                    throw new Error('JSON file load karne mein samasya aayi!');
-                }
 
-                const data = await response.json();
-                let cardsData = [];
-                let dateString = "";
+<!-- CARD 4 --><div onclick="sellCardWhatsApp('Bata')" class="cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col justify-between text-center hover:shadow-md transition">
+<div class="w-full p-0 m-0 flex items-center justify-center overflow-hidden">
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Bata_logo.svg" alt="Bata" class="w-full h-full object-cover p-0 m-0 block">
+</div>
 
-                // Checking JSON structure (Object vs Array)
-                if (Array.isArray(data)) {
-                    cardsData = data;
-                    dateString = data[0]?.date || data[0]?.updated_at || "Today";
-                } else {
-                    cardsData = data.cards || [];
-                    dateString = data.last_updated || data.date || "Today";
-                }
+<div class="bg-sky-50 py-2.5 px-2 text-xs font-bold text-gray-900 border-t border-sky-100 uppercase tracking-wide truncate">
+Bata
+</div>
+</div>
 
-                // Update date badge text
-                if (ratesLastUpdated) {
-                    ratesLastUpdated.innerText = dateString;
-                }
 
-                ratesTableBody.innerHTML = '';
+<!-- CARD 5 --><div onclick="sellCardWhatsApp('Roblox')" class="cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col justify-between text-center hover:shadow-md transition">
+<div class="w-full p-0 m-0 flex items-center justify-center overflow-hidden">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_2022.svg" alt="Roblox" class="w-full h-full object-cover p-0 m-0 block">
+</div>
 
-                cardsData.forEach(card => {
-                    const rateRowHTML = `
-                        <tr class="hover:bg-gray-50 transition">
-                            <td class="p-2.5 font-semibold text-gray-900">${card.name}</td>
-                            <td class="p-2.5 text-green-600 font-bold">${card.value}</td>
-                            <td class="p-2.5 text-gray-500">${card.time}</td>
-                        </tr>
-                    `;
-                    ratesTableBody.insertAdjacentHTML('beforeend', rateRowHTML);
-                });
-            } catch (error) {
-                console.error('Error:', error);
-                ratesTableBody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-red-500">Rates load nahi ho sake. Kripya rates.json file check karein.</td></tr>`;
-                if (ratesLastUpdated) {
-                    ratesLastUpdated.innerText = "Updated Today";
-                }
-            }
-        }
+<div class="bg-sky-50 py-2.5 px-2 text-xs font-bold text-gray-900 border-t border-sky-100 uppercase tracking-wide truncate">
+Roblox
+</div>
+</div>
 
-        function sellCardWhatsApp(cardName) {
-            const adminNumber = "919876543210";
-            const text = encodeURIComponent(`Hello GiftBuyer, mujhe *${cardName}* sell karna hai. Please rate aur process bataiye.`);
-            window.open(`https://wa.me/${adminNumber}?text=${text}`, '_blank');
-        }
 
-        document.getElementById('menuBtn').addEventListener('click', () => {
-            document.getElementById('mobileMenu').classList.toggle('hidden');
-        });
+<!-- CARD 6 --><div onclick="sellCardWhatsApp('Croma')" class="cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col justify-between text-center hover:shadow-md transition">
+<div class="w-full p-0 m-0 flex items-center justify-center overflow-hidden">
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Croma_Logo.png" alt="Croma" class="w-full h-full object-cover p-0 m-0 block">
+</div>
 
-        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
-        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+<div class="bg-sky-50 py-2.5 px-2 text-xs font-bold text-gray-900 border-t border-sky-100 uppercase tracking-wide truncate">
+Croma
+</div>
+</div>
+</div>
+</section>
 
-        // Continuous Right-to-Left Infinite Loop Slider
-        const slider = document.getElementById('slider');
 
-        function nextSlide() { 
-            slider.style.transition = 'transform 0.7s ease-in-out';
-            slider.style.transform = 'translateX(-100%)';
-            
-            setTimeout(() => {
-                slider.style.transition = 'none';
-                slider.appendChild(slider.firstElementChild);
-                slider.style.transform = 'translateX(0)';
-            }, 700);
-        }
+<!-- =====================================================RATES===================================================== -->
+<section id="rates" class="bg-white p-4 sm:p-6 rounded-xl shadow-sm border border-gray-200">
 
-        function prevSlide() { 
-            slider.style.transition = 'none';
-            slider.insertBefore(slider.lastElementChild, slider.firstElementChild);
-            slider.style.transform = 'translateX(-100%)';
-            
-            setTimeout(() => {
-                slider.style.transition = 'transform 0.7s ease-in-out';
-                slider.style.transform = 'translateX(0)';
-            }, 20);
-        }
+<div class="mb-4 border-b pb-3 flex justify-between items-center flex-wrap gap-2">
+<div>
+<div class="flex items-center gap-2 flex-wrap">
+<h2 class="text-xl font-bold text-gray-900">Gift Buyer Buying Rates</h2>
 
-        setInterval(nextSlide, 3500);
-        
-        document.addEventListener('DOMContentLoaded', renderRatesTable);
-    </script>
-</body>
-</html>
+<span id="rates-date-badge" class="bg-green-100 text-green-800 border border-green-200 text-xs font-semibold px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+<i class="fa-regular fa-clock text-green-600"></i>
+<span id="rates-last-updated">Date Fetching...</span>
+</span>
+</div>
+
+<p class="text-xs text-gray-500 mt-0.5">Live updated payout percentages for your gift cards</p>
+</div>
+</div>
+
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-gray-100 border-b text-gray-700 text-xs sm:text-sm">
+<th class="p-2.5 font-semibold">Card Name</th>
+<th class="p-2.5 font-semibold">Payout Rate</th>
+<th class="p-2.5 font-semibold">Est. Speed</th>
+</tr>
+</thead>
+
+<tbody id="rates-table-body" class="divide-y divide-gray-200 text-xs sm:text-sm">
+</tbody>
+</table>
+</div>
+
+<p class="text-[11px] text-gray-400 mt-3">* Payout rates depend on market conditions and card denomination.</p>
+</section>
+</main>
+
+
+<!-- =====================================================SIDEBAR===================================================== -->
+<aside class="w-full lg:w-1/4 space-y-6">
+
+<div class="bg-gradient-to-br from-indigo-600 to-purple-700 text-white rounded-xl p-5 shadow-md">
+<h3 class="text-lg font-bold mb-2 flex items-center gap-2">
+<i class="fa-solid fa-bolt text-yellow-300"></i>
+Direct Instant Sell
+</h3>
+
+<p class="text-xs text-indigo-100 mb-4">
+WhatsApp par card details bhejein aur instant payment paayein.
+</p>
+
+<a href="https://wa.me/919876543210?text=Hello,%20mujhe%20gift%20card%20sell%20karna%20hai" target="_blank" class="block text-center bg-green-500 hover:bg-green-600 text-white font-bold py-2.5 rounded-lg text-sm shadow transition">
+<i class="fa-brands fa-whatsapp mr-1 text-base"></i>
+Sell via WhatsApp
+</a>
+</div>
+
+
+<div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200">
+<h4 class="text-sm font-bold text-gray-900 mb-3 uppercase tracking-wider">
+Instant Payout Methods
+</h4>
+
+<div class="grid grid-cols-2 gap-2 text-xs font-semibold text-gray-600">
+<div class="bg-gray-100 p-2 rounded text-center border">Google Pay</div>
+<div class="bg-gray-100 p-2 rounded text-center border">PhonePe</div>
+<div class="bg-gray-100 p-2 rounded text-center border">Paytm UPI</div>
+<div class="bg-gray-100 p-2 rounded text-center border">Bank Transfer</div>
+</div>
+</div>
+
+
+<div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200 text-center">
+<i class="fa-solid fa-headset text-3xl text-indigo-600 mb-2"></i>
+<h4 class="text-base font-bold text-gray-900">Need Help?</h4>
+<p class="text-xs text-gray-500 mt-1 mb-3">Live chat support is available 24/7</p>
+<p class="text-xs font-semibold text-indigo-600">+91 99343 63941</p>
+</div>
+</aside>
+</div>
+
+
+<!-- =====================================================FAQ===================================================== -->
+<section id="faq" class="bg-white p-5 sm:p-6 rounded-xl shadow-sm border border-gray-200">
+
+<div class="border-b pb-3 mb-4">
+<h2 class="text-xl sm:text-2xl font-bold text-gray-900 flex items-center gap-2">
+<i class="fa-solid fa-circle-question text-indigo-600"></i>
+Frequently Asked Questions (FAQ)
+</h2>
+
+<p class="text-xs sm:text-sm text-gray-500">
+Gift card bechne se jude aam sawalon ke jawab
+</p>
+</div>
+
+<div class="space-y-3">
+
+<details class="group bg-gray-50 p-3.5 rounded-lg cursor-pointer border border-gray-200/60">
+<summary class="font-semibold text-sm text-gray-800 flex justify-between items-center list-none">
+<span>Q1. Gift Card bechne ka process kya hai?</span>
+<i class="fa-solid fa-chevron-down text-xs text-gray-500 transition-transform group-open:rotate-180"></i>
+</summary>
+
+<p class="text-xs sm:text-sm text-gray-600 mt-2.5 pt-2 border-t border-gray-200">
+Apna card select karein, WhatsApp icon par click karke hamare saath card ka code aur screenshot share karein. Card verify hote hi aapko instant payment mil jayegi.
+</p>
+</details>
+
+
+<details class="group bg-gray-50 p-3.5 rounded-lg cursor-pointer border border-gray-200/60">
+<summary class="font-semibold text-sm text-gray-800 flex justify-between items-center list-none">
+<span>Q2. Payment kitni der me milti hai?</span>
+<i class="fa-solid fa-chevron-down text-xs text-gray-500 transition-transform group-open:rotate-180"></i>
+</summary>
+
+<p class="text-xs sm:text-sm text-gray-600 mt-2.5 pt-2 border-t border-gray-200">
+Card validation ke baad 5 se 15 minute ke andar aapke pasandida method (UPI, GPay, PhonePe, Paytm, ya Bank Transfer) se payment bhej di jaati hai.
+</p>
+</details>
+
+
+<details class="group bg-gray-50 p-3.5 rounded-lg cursor-pointer border border-gray-200/60">
+<summary class="font-semibold text-sm text-gray-800 flex justify-between items-center list-none">
+<span>Q3. Kya mera gift card information safe hai?</span>
+<i class="fa-solid fa-chevron-down text-xs text-gray-500 transition-transform group-open:rotate-180"></i>
+</summary>
+
+<p class="text-xs sm:text-sm text-gray-600 mt-2.5 pt-2 border-t border-gray-200">
+Haan, GiftBuyer ek 100% trusted aur verified platform hai. Aapki privacy aur data bilkul surakshit rehti hai.
+</p>
+</details>
+
+
+<details class="group bg-gray-50 p-3.5 rounded-lg cursor-pointer border border-gray-200/60">
+<summary class="font-semibold text-sm text-gray-800 flex justify-between items-center list-none">
+<span>Q4. Konsi gift cards accept ki jaati hain?</span>
+<i class="fa-solid fa-chevron-down text-xs text-gray-500 transition-transform group-open:rotate-180"></i>
+</summary>
+
+<p class="text-xs sm:text-sm text-gray-600 mt-2.5 pt-2 border-t border-gray-200">
+Hum gaming vouchers (PlayStation, Valorant, Roblox) aur retail vouchers (Flipkart, Bata, Croma) sahit sabhi major gift cards accept karte hain.
+</p>
+</details>
+</div>
+</section>
+
+
+<!-- =====================================================ARTICLE===================================================== -->
+<section id="article-box" class="bg-white p-5 sm:p-6 rounded-xl shadow-sm border border-gray-200">
+
+<h2 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 border-b pb-2 flex items-center gap-2">
+<i class="fa-solid fa-newspaper text-indigo-600"></i>
+About GiftBuyer - Online Gift Card Selling Platform
+</h2>
+
+<article class="prose max-w-none text-xs sm:text-sm text-gray-600 space-y-3 leading-relaxed">
+
+<p>
+Welcome to <strong>GiftBuyer</strong>, India's premier platform to convert unused gift cards and digital vouchers into instant cash. Whether you have gaming gift cards like PlayStation, Roblox, Valorant, or retail shopping vouchers from Flipkart, Bata, and Croma, we offer the best payout rates with instant UPI and Bank transfers.
+</p>
+
+<h3 class="text-sm font-bold text-gray-800 mt-3 mb-1">
+Why Sell Gift Cards to Us?
+</h3>
+
+<p>
+Selling gift cards online can often be risky. GiftBuyer ensures a transparent, fast, and secure redemption process. With 24/7 customer support and live dynamic rates updated daily, you always get maximum value for your vouchers without any hidden charges.
+</p>
+
+<h3 class="text-sm font-bold text-gray-800 mt-3 mb-1">
+How Our Instant Cash Transfer Works
+</h3>
+
+<p>
+Simply select your brand, send the code via our direct WhatsApp channel, and get your payout verified within minutes. Our seamless payout integration ensures money reaches your GPay, PhonePe, or Bank Account instantly.
+</p>
+</article>
+</section>
+</div>
+
+
+<!-- =========================================================FOOTER========================================================= -->
+<footer class="bg-gray-900 text-gray-300 pt-10 pb-6 border-t border-gray-800">
+
+<div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-sm">
+
+<!-- Brand --><div>
+<span class="text-xl font-bold text-white flex items-center gap-2 mb-2">
+<i class="fa-solid fa-credit-card text-indigo-500"></i>
+Gift<span class="text-indigo-500">Buyer</span>
+</span>
+
+<p class="text-xs text-gray-400 leading-relaxed mb-4">
+India's trusted Gift Buyer (GiftBuyer) platform for buying and selling gaming and retail vouchers for instant cash.
+</p>
+
+<div class="flex items-center space-x-3">
+
+<a href="https://facebook.com" target="_blank" aria-label="Facebook" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-indigo-600 text-gray-400 hover:text-white flex items-center justify-center transition">
+<i class="fa-brands fa-facebook-f text-sm"></i>
+</a>
+
+<a href="https://instagram.com" target="_blank" aria-label="Instagram" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-indigo-600 text-gray-400 hover:text-white flex items-center justify-center transition">
+<i class="fa-brands fa-instagram text-sm"></i>
+</a>
+
+<a href="https://telegram.org" target="_blank" aria-label="Telegram" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-indigo-600 text-gray-400 hover:text-white flex items-center justify-center transition">
+<i class="fa-brands fa-telegram text-sm"></i>
+</a>
+
+<a href="https://youtube.com" target="_blank" aria-label="YouTube" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-indigo-600 text-gray-400 hover:text-white flex items-center justify-center transition">
+<i class="fa-brands fa-youtube text-sm"></i>
+</a>
+
+<a href="https://twitter.com" target="_blank" aria-label="Twitter" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-indigo-600 text-gray-400 hover:text-white flex items-center justify-center transition">
+<i class="fa-brands fa-x-twitter text-sm"></i>
+</a>
+</div>
+</div>
+
+
+<!-- Quick Links --><div>
+<h4 class="text-white font-semibold mb-3 text-xs uppercase tracking-wider border-b border-gray-800 pb-1">Quick Links</h4>
+
+<ul class="space-y-2 text-xs text-gray-400">
+<li><a href="#hero" class="hover:text-indigo-400 transition">Home</a></li>
+<li><a href="#cards-catalog" class="hover:text-indigo-400 transition">Supported Cards</a></li>
+<li><a href="#cards-catalog" class="hover:text-indigo-400 transition">Sell Gift Card</a></li>
+<li><a href="#rates" class="hover:text-indigo-400 transition">Buying Rates</a></li>
+<li><a href="#faq" class="hover:text-indigo-400 transition">FAQ</a></li>
+</ul>
+</div>
+
+
+<!-- Legal --><div>
+<h4 class="text-white font-semibold mb-3 text-xs uppercase tracking-wider border-b border-gray-800 pb-1">Legal & Support</h4>
+
+<ul class="space-y-2 text-xs text-gray-400">
+<li><a href="#article-box" class="hover:text-indigo-400 transition">About Gift Buyer</a></li>
+<li><a href="#contact" class="hover:text-indigo-400 transition">Contact Us</a></li>
+<li><a href="#terms" class="hover:text-indigo-400 transition">Terms & Conditions</a></li>
+<li><a href="#privacy" class="hover:text-indigo-400 transition">Privacy Policy</a></li>
+</ul>
+</div>
+
+
+<!-- Contact --><div>
+<h4 class="text-white font-semibold mb-3 text-xs uppercase tracking-wider border-b border-gray-800 pb-1">Get In Touch</h4>
+
+<ul class="space-y-2 text-xs text-gray-400">
+
+<li class="flex items-center gap-2">
+<i class="fa-solid fa-envelope text-indigo-400"></i>
+<span>support@giftbuyer.com</span>
+</li>
+
+<li class="flex items-center gap-2">
+<i class="fa-solid fa-phone text-indigo-400"></i>
+<span>+91 99343 63941</span>
+</li>
+</ul>
+</div>
+</div>
+
+<div class="border-t border-gray-800 text-center pt-4 text-xs text-gray-500">
+© 2026 GiftBuyer (Gift Buyer). All Rights Reserved.
+</div>
+</footer>
+
+
+<!-- =========================================================LOGIN MODAL========================================================= -->
+<div id="loginModal" class="fixed inset-0 bg-black/60 hidden z-50 flex items-center justify-center p-4">
+
+<div class="bg-white rounded-xl shadow-xl w-full max-w-sm p-5 relative">
+
+<button onclick="closeModal('loginModal')" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600">
+<i class="fa-solid fa-xmark text-lg"></i>
+</button>
+
+<h3 class="text-xl font-bold mb-3 text-gray-900">Login</h3>
+
+<form class="space-y-3" onsubmit="event.preventDefault(); closeModal('loginModal');">
+
+<input type="text" placeholder="Mobile / Email" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
+
+<input type="password" placeholder="Password" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
+
+<button type="submit" class="w-full bg-indigo-600 text-white font-bold py-2 rounded-lg text-sm shadow">
+Login
+</button>
+</form>
+</div>
+</div>
+
+
+<!-- =========================================================REGISTER MODAL========================================================= -->
+<div id="registerModal" class="fixed inset-0 bg-black/60 hidden z-50 flex items-center justify-center p-4">
+
+<div class="bg-white rounded-xl shadow-xl w-full max-w-sm p-5 relative">
+
+<button onclick="closeModal('registerModal')" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600">
+<i class="fa-solid fa-xmark text-lg"></i>
+</button>
+
+<h3 class="text-xl font-bold mb-3 text-gray-900">Register</h3>
+
+<form class="space-y-3" onsubmit="event.preventDefault(); closeModal('registerModal');">
+
+<input type="text" placeholder="Full Name" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
+
+<input type="tel" placeholder="Mobile Number" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
+
+<input type="password" placeholder="Password" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
+
+<button type="submit" class="w-full bg-indigo-600 text-white font-bold py-2 rounded-lg text-sm shadow">
+Register
+</button>
+</form>
+</div>
+</div>
+
+
+<!-- =========================================================JAVASCRIPT========================================================= -->
+<script>
+
+/* =====================================================RATES TABLE===================================================== */
+async function renderRatesTable() {
+const ratesTableBody = document.getElementById('rates-table-body');
+const ratesLastUpdated = document.getElementById('rates-last-updated');
+
+ratesTableBody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-gray-500">
+Rates load ho rahe hain...
+</td></tr>`;
+
+try {
+const response = await fetch('rates.json?v=' + Date.now(),{cache: 'no-store'});
+
+if (!response.ok) {
+throw new Error('JSON file load karne mein samasya aayi!');
+}
+
+const data = await response.json();
+
+let cardsData = [];
+let dateString = "";
+
+if (Array.isArray(data)) {
+cardsData = data;
+dateString = data[0]?.date || data[0]?.updated_at || "Today";
+} else {
+cardsData = data.cards || [];
+dateString = data.last_updated || data.date || "Today";
+}
+
+if (ratesLastUpdated) {
+ratesLastUpdated.innerText = dateString;
+}
+
+ratesTableBody.innerHTML = '';
+
+cardsData.forEach(card => {
+
+const rateRowHTML = `
+<tr class="hover:bg-gray-50 transition">
+<td class="p-2.5 font-semibold text-gray-900">${card.name}</td>
+<td class="p-2.5 text-green-600 font-bold">${card.value}</td>
+<td class="p-2.5 text-gray-500">${card.time}</td>
+</tr>
+`;
+
+ratesTableBody.insertAdjacentHTML('beforeend',rateRowHTML);
+});
+
+} catch (error) {
+
+console.error('Error:',error);
+
+ratesTableBody.innerHTML = `
+<tr>
+<td colspan="3" class="p-4 text-center text-red-500">
+Rates load nahi ho sake.Kripya rates.json file check karein.
+</td>
+</tr>
+`;
+
+if (ratesLastUpdated) {
+ratesLastUpdated.innerText = "Updated Today";
+}
+}
+}
+
+
+/* =====================================================WHATSAPP SELL===================================================== */
+function sellCardWhatsApp(cardName) {
+const adminNumber = "919876543210";
+
+const text = encodeURIComponent(`Hello GiftBuyer, mujhe *${cardName}* sell karna hai. Please rate aur process bataiye.`);
+
+window.open(`https://wa.me/${adminNumber}?text=${text}`,'_blank');
+}
+
+
+/* =====================================================MOBILE MENU===================================================== */
+document.getElementById('menuBtn').addEventListener('click', () => {
+
+document.getElementById('mobileMenu').classList.toggle('hidden');
+
+});
+
+
+/* =====================================================MODALS===================================================== */
+function openModal(id) {
+document.getElementById(id).classList.remove('hidden');
+}
+
+function closeModal(id) {
+document.getElementById(id).classList.add('hidden');
+}
+
+
+/* =====================================================SLIDER===================================================== */
+const slider = document.getElementById('slider');
+
+function nextSlide() {
+
+slider.style.transition = 'transform 0.7s ease-in-out';
+
+slider.style.transform = 'translateX(-100%)';
+
+setTimeout(() => {
+
+slider.style.transition = 'none';
+
+slider.appendChild(slider.firstElementChild);
+
+slider.style.transform = 'translateX(0)';
+
+}, 700);
+}
+
+
+function prevSlide() {
+
+slider.style.transition = 'none';
+
+slider.insertBefore(slider.lastElementChild,slider.firstElementChild);
+
+slider.style.transform = 'translateX(-100%)';
+
+setTimeout(() => {
+
+slider.style.transition = 'transform 0.7s ease-in-out';
+
+slider.style.transform = 'translateX(0)';
+
+}, 20);
+}
+
+
+/* =====================================================AUTO SLIDER===================================================== */
+setInterval(nextSlide,3500);
+
+
+/* =====================================================LOAD RATES===================================================== */
+document.addEventListener('DOMContentLoaded',renderRatesTable);
+
+</script>
+</body></html>
