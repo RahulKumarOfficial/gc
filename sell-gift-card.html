@@ -1,0 +1,644 @@
+
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Buyer - Sell Gift Cards Instant Cash</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 flex flex-col min-h-screen">
+
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-2">
+                    <i class="fa-solid fa-credit-card text-indigo-600 text-2xl"></i>
+                    <span class="text-2xl font-bold text-gray-900">Gift<span class="text-indigo-600">Buyer</span></span>
+                </a>
+
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex space-x-4 lg:space-x-8 text-sm font-medium text-gray-700">
+                    <a href="#hero" class="hover:text-indigo-600 transition">Home</a>
+                    <a href="#cards-catalog" class="hover:text-indigo-600 transition">Gift Cards</a>
+                    <a href="#rates" class="hover:text-indigo-600 transition">Today's Rates</a>
+                    <a href="#faq" class="hover:text-indigo-600 transition">FAQ</a>
+                    <a href="#article-box" class="hover:text-indigo-600 transition">About</a>
+                </nav>
+
+                <!-- Auth Buttons -->
+                <div class="hidden md:flex items-center space-x-2 lg:space-x-3">
+                    <button onclick="openModal('loginModal')" class="text-indigo-600 border border-indigo-600 hover:bg-indigo-50 px-3 lg:px-4 py-1.5 rounded-lg text-sm font-semibold transition">Login</button>
+                    <button onclick="openModal('registerModal')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 lg:px-4 py-1.5 rounded-lg text-sm font-semibold shadow transition">Register</button>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="flex md:hidden items-center">
+                    <button id="menuBtn" class="text-gray-700 focus:outline-none p-2 text-xl">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200 px-4 pt-2 pb-4 space-y-2">
+            <a href="#hero" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">Home</a>
+            <a href="#cards-catalog" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">Gift Cards</a>
+            <a href="#rates" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">Today's Rates</a>
+            <a href="#faq" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">FAQ</a>
+            <a href="#article-box" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">About</a>
+
+            <div class="pt-2 border-t border-gray-100 flex gap-2">
+                <button onclick="openModal('loginModal')" class="w-1/2 text-center text-indigo-600 border border-indigo-600 py-2 rounded-lg font-semibold text-sm">Login</button>
+                <button onclick="openModal('registerModal')" class="w-1/2 text-center bg-indigo-600 text-white py-2 rounded-lg font-semibold text-sm">Register</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- =========================================================
+         MAIN CONTAINER
+    ========================================================= -->
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 sm:p-6 my-2">
+
+        <!-- 3 TOP BUTTONS (COMPACT MOBILE HEIGHT & NO ALERTS) -->
+        <div class="grid grid-cols-3 gap-1.5 sm:gap-4 mb-6">
+            <a href="#orderForm" class="bg-indigo-600 hover:bg-indigo-700 text-white text-center py-2 px-1 sm:py-2.5 sm:px-2 rounded-lg sm:rounded-xl text-[11px] sm:text-sm font-bold shadow transition flex items-center justify-center gap-1 sm:gap-1.5 leading-tight">
+                <i class="fa-solid fa-cart-shopping text-xs sm:text-sm"></i>
+                <span>Sell Gift Cards</span>
+            </a>
+            <a href="#" class="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 text-center py-2 px-1 sm:py-2.5 sm:px-2 rounded-lg sm:rounded-xl text-[11px] sm:text-sm font-bold transition flex items-center justify-center gap-1 sm:gap-1.5 leading-tight">
+                <i class="fa-solid fa-clock-rotate-left text-xs sm:text-sm"></i>
+                <span>Payment Status</span>
+            </a>
+            <a href="#rates" class="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 text-center py-2 px-1 sm:py-2.5 sm:px-2 rounded-lg sm:rounded-xl text-[11px] sm:text-sm font-bold transition flex items-center justify-center gap-1 sm:gap-1.5 leading-tight">
+                <i class="fa-solid fa-list-ul text-xs sm:text-sm"></i>
+                <span>Price List</span>
+            </a>
+        </div>
+
+        <div class="flex flex-col lg:flex-row-reverse gap-6 lg:gap-8 items-start">
+            
+            <!-- 1. GIFT CARD ORDER FORM (Right on PC / Top on Mobile) -->
+            <div class="w-full lg:w-7/12 bg-white rounded-2xl shadow-md border border-gray-200 p-5 sm:p-8">
+                <div class="text-center mb-6 border-b pb-4">
+                    <h2 class="text-2xl font-bold text-gray-900 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-file-invoice text-indigo-600"></i> Gift Card Order Form
+                    </h2>
+                    <p class="text-xs text-gray-500 mt-1">Submit your gift card codes for instant WhatsApp processing</p>
+                    
+                    <!-- Dynamic JSON Date Badge -->
+                    <div class="mt-2 inline-flex items-center gap-1 bg-green-50 text-green-700 border border-green-200 text-xs px-3 py-1 rounded-full font-medium">
+                        <i class="fa-regular fa-clock"></i>
+                        <span id="jsonDateText">Rates Loading...</span>
+                    </div>
+                </div>
+
+                <form id="orderForm" class="space-y-6">
+                    <!-- Dynamic Card Rows Container -->
+                    <div id="cardsContainer" class="space-y-4">
+                        <!-- Dynamic Rows Rendered Here -->
+                    </div>
+
+                    <button type="button" onclick="addCardRow()" class="w-full bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold py-2.5 rounded-xl border border-indigo-200 text-sm transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-plus text-xs"></i> Add Another Card
+                    </button>
+
+                    <!-- Grand Total Display -->
+                    <div class="bg-indigo-900 text-white p-4 rounded-xl flex justify-between items-center shadow-inner">
+                        <span class="text-sm sm:text-base font-semibold">Grand Total Amount:</span>
+                        <span class="text-xl sm:text-2xl font-extrabold text-green-400">₹<span id="grandTotalText">0</span></span>
+                    </div>
+
+                    <!-- PAYMENT METHOD SECTION -->
+                    <div class="bg-gray-50 p-4 sm:p-5 rounded-xl border border-gray-200 space-y-4">
+                        <h3 class="text-sm font-bold text-gray-800 uppercase tracking-wide border-b pb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-wallet text-indigo-600"></i> Receiving Payment Method
+                        </h3>
+
+                        <div>
+                            <label for="paymentMode" class="block text-xs font-semibold text-gray-700 mb-1">Select Payment Mode:</label>
+                            <select id="paymentMode" onchange="togglePaymentInputs()" class="w-full p-2.5 bg-white border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                                <option value="">-- Choose Payment Mode --</option>
+                                <option value="UPI">UPI ID</option>
+                                <option value="BANK">Bank Account Details</option>
+                                <option value="USDT">USDT (BEP20) Address</option>
+                            </select>
+                        </div>
+
+                        <div id="upiInputBox" class="hidden">
+                            <label for="upiId" class="block text-xs font-semibold text-gray-700 mb-1">Enter Valid UPI ID:</label>
+                            <input type="text" id="upiId" placeholder="e.g. mobileNumber@upi / name@okaxis" class="w-full p-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                            <p class="text-[11px] text-gray-400 mt-1">* Example: 9876543210@ybl, username@paytm</p>
+                        </div>
+
+                        <div id="bankInputBox" class="hidden">
+                            <label for="bankDetails" class="block text-xs font-semibold text-gray-700 mb-1">Enter Bank Details (A/C, IFSC, Holder Name):</label>
+                            <textarea id="bankDetails" rows="3" placeholder="A/C No: XXXXXXXXX&#10;IFSC: SBIN000XXXX&#10;Name: Account Holder Name" class="w-full p-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"></textarea>
+                        </div>
+
+                        <div id="usdtInputBox" class="hidden">
+                            <label for="usdtAddress" class="block text-xs font-semibold text-gray-700 mb-1">Enter USDT (BEP20) Wallet Address:</label>
+                            <input type="text" id="usdtAddress" placeholder="0x... (BEP20 Network Only)" class="w-full p-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="button" onclick="sendWhatsApp()" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-xl text-base shadow-lg transition active:scale-95 flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> Send to WhatsApp
+                    </button>
+                </form>
+            </div>
+
+            <!-- 2. RATES PRICE LIST & SUPPORT SECTION (Left on PC / Bottom on Mobile) -->
+            <div class="w-full lg:w-5/12 space-y-6">
+                <!-- PRICE LIST SECTION -->
+                <section id="rates" class="bg-white rounded-2xl shadow-md border border-gray-200 p-5 sm:p-6 space-y-4">
+                    <div class="border-b pb-3 flex justify-between items-center flex-wrap gap-2">
+                        <div>
+                            <h2 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                                <i class="fa-solid fa-list-check text-green-600"></i> Today's Price List
+                            </h2>
+                            <p class="text-xs text-gray-500 mt-0.5">Live updated payout rates for supported cards</p>
+                        </div>
+
+                        <!-- Dynamic JSON Date Badge in Price List -->
+                        <div class="inline-flex items-center gap-1 bg-green-50 text-green-700 border border-green-200 text-xs px-2.5 py-1 rounded-full font-medium">
+                            <i class="fa-regular fa-clock"></i>
+                            <span id="priceListDateText">Rates Loading...</span>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-100 border-b text-gray-700 text-xs sm:text-sm">
+                                    <th class="p-2.5 font-semibold">Card Name</th>
+                                    <th class="p-2.5 font-semibold">Payout Rate</th>
+                                    <th class="p-2.5 font-semibold">Est. Speed</th>
+                                </tr>
+                            </thead>
+                            <tbody id="rates-table-body" class="divide-y divide-gray-200 text-xs sm:text-sm">
+                                <tr>
+                                    <td colspan="3" class="p-4 text-center text-gray-500">Loading rates...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="bg-indigo-50 p-3.5 rounded-xl border border-indigo-100 text-xs text-indigo-900 space-y-1">
+                        <p class="font-bold flex items-center gap-1">
+                            <i class="fa-solid fa-shield-halved text-indigo-600"></i> Fast Payout Guarantee
+                        </p>
+                        <p class="text-[11px] text-gray-600">Rates are live & synced with our processing servers. Select card in the form to sell instantly.</p>
+                    </div>
+                </section>
+
+                <!-- SUPPORT SECTION -->
+                <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200 text-center">
+                    <i class="fa-solid fa-headset text-3xl text-indigo-600 mb-2"></i>
+                    <h4 class="text-base font-bold text-gray-900">Need Help?</h4>
+                    <p class="text-xs text-gray-500 mt-1 mb-3">Live chat support is available 24/7</p>
+                    <p class="text-xs font-semibold text-indigo-600">+91 99343 63941</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+    <footer class="bg-gray-900 text-gray-300 pt-10 pb-6 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-sm">
+
+            <!-- Brand -->
+            <div>
+                <span class="text-xl font-bold text-white flex items-center gap-2 mb-2">
+                    <i class="fa-solid fa-credit-card text-indigo-500"></i>
+                    Gift<span class="text-indigo-500">Buyer</span>
+                </span>
+
+                <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                    India's trusted Gift Buyer (GiftBuyer) platform for buying and selling gaming and retail vouchers for instant cash.
+                </p>
+
+                <div class="flex items-center space-x-3">
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-indigo-600 text-gray-400 hover:text-white flex items-center justify-center transition">
+                        <i class="fa-brands fa-facebook-f text-sm"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-indigo-600 text-gray-400 hover:text-white flex items-center justify-center transition">
+                        <i class="fa-brands fa-instagram text-sm"></i>
+                    </a>
+                    <a href="https://telegram.org" target="_blank" aria-label="Telegram" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-indigo-600 text-gray-400 hover:text-white flex items-center justify-center transition">
+                        <i class="fa-brands fa-telegram text-sm"></i>
+                    </a>
+                    <a href="https://youtube.com" target="_blank" aria-label="YouTube" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-indigo-600 text-gray-400 hover:text-white flex items-center justify-center transition">
+                        <i class="fa-brands fa-youtube text-sm"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-indigo-600 text-gray-400 hover:text-white flex items-center justify-center transition">
+                        <i class="fa-brands fa-x-twitter text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-white font-semibold mb-3 text-xs uppercase tracking-wider border-b border-gray-800 pb-1">Quick Links</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><a href="#hero" class="hover:text-indigo-400 transition">Home</a></li>
+                    <li><a href="#cards-catalog" class="hover:text-indigo-400 transition">Supported Cards</a></li>
+                    <li><a href="#cards-catalog" class="hover:text-indigo-400 transition">Sell Gift Card</a></li>
+                    <li><a href="#rates" class="hover:text-indigo-400 transition">Buying Rates</a></li>
+                    <li><a href="#faq" class="hover:text-indigo-400 transition">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- Legal -->
+            <div>
+                <h4 class="text-white font-semibold mb-3 text-xs uppercase tracking-wider border-b border-gray-800 pb-1">Legal & Support</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><a href="#article-box" class="hover:text-indigo-400 transition">About Gift Buyer</a></li>
+                    <li><a href="#contact" class="hover:text-indigo-400 transition">Contact Us</a></li>
+                    <li><a href="#terms" class="hover:text-indigo-400 transition">Terms & Conditions</a></li>
+                    <li><a href="#privacy" class="hover:text-indigo-400 transition">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h4 class="text-white font-semibold mb-3 text-xs uppercase tracking-wider border-b border-gray-800 pb-1">Get In Touch</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-envelope text-indigo-400"></i>
+                        <span>support@giftbuyer.com</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-phone text-indigo-400"></i>
+                        <span>+91 99343 63941</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 text-center pt-4 text-xs text-gray-500">
+            © 2026 GiftBuyer (Gift Buyer). All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black/60 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-sm p-5 relative">
+            <button onclick="closeModal('loginModal')" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <h3 class="text-xl font-bold mb-3 text-gray-900">Login</h3>
+            <form class="space-y-3" onsubmit="event.preventDefault(); closeModal('loginModal');">
+                <input type="text" placeholder="Mobile / Email" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
+                <input type="password" placeholder="Password" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
+                <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-2 rounded-lg text-sm shadow">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="fixed inset-0 bg-black/60 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-sm p-5 relative">
+            <button onclick="closeModal('registerModal')" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <h3 class="text-xl font-bold mb-3 text-gray-900">Register</h3>
+            <form class="space-y-3" onsubmit="event.preventDefault(); closeModal('registerModal');">
+                <input type="text" placeholder="Full Name" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
+                <input type="tel" placeholder="Mobile Number" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
+                <input type="password" placeholder="Password" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
+                <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-2 rounded-lg text-sm shadow">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         JAVASCRIPT APPLICATION LOGIC
+    ========================================================= -->
+    <script>
+        const MY_WHATSAPP_NUMBER = "919934363941";
+        const JSON_URL = "https://rahulkumarofficial.github.io/gc/rates.json";
+        let GIFT_CARD_LIST = [];
+
+        // Real-Time JSON Fetching with Cache-Busting
+        async function fetchGiftCards() {
+            try {
+                const response = await fetch(`${JSON_URL}?v=${Date.now()}`, { cache: 'no-store' });
+                if (!response.ok) throw new Error("JSON Fetch Failed!");
+
+                const data = await response.json();
+                let rawCards = [];
+                let dateText = "Updated Today";
+
+                if (Array.isArray(data)) {
+                    rawCards = data;
+                } else {
+                    rawCards = data.cards || [];
+                    dateText = data.last_updated || "Updated Today";
+                }
+
+                // Update Date Badges in both Form Header and Price List
+                document.getElementById('jsonDateText').innerText = dateText;
+                if (document.getElementById('priceListDateText')) {
+                    document.getElementById('priceListDateText').innerText = dateText;
+                }
+
+                // Processing Rates from JSON
+                GIFT_CARD_LIST = rawCards.map(item => {
+                    const rawVal = String(item.value);
+                    const cleanRate = parseFloat(rawVal.replace(/[^0-9.]/g, '')) || 0;
+
+                    return {
+                        name: item.name,
+                        displayValue: rawVal.includes('₹') || rawVal.includes('%') ? rawVal : `₹${rawVal}`,
+                        rate: cleanRate,
+                        time: item.time || "Instant"
+                    };
+                });
+
+                // Populate Price List Table
+                renderRatesTable(rawCards);
+
+                updateAllSelectOptions();
+            } catch (error) {
+                console.error("Error loading JSON rates:", error);
+                document.getElementById('jsonDateText').innerText = "Rates Offline";
+                if (document.getElementById('priceListDateText')) {
+                    document.getElementById('priceListDateText').innerText = "Rates Offline";
+                }
+                document.getElementById('rates-table-body').innerHTML = `<tr><td colspan="3" class="p-4 text-center text-red-500">Unable to load rates.</td></tr>`;
+            }
+        }
+
+        // Render Rates Table from JSON
+        function renderRatesTable(cards) {
+            const tbody = document.getElementById('rates-table-body');
+            if (!tbody) return;
+
+            tbody.innerHTML = cards.map(c => `
+                <tr class="hover:bg-gray-50 transition border-b border-gray-100">
+                    <td class="p-2.5 font-semibold text-gray-900">${c.name}</td>
+                    <td class="p-2.5 text-green-600 font-bold">${c.value}</td>
+                    <td class="p-2.5 text-gray-500 text-xs">${c.time || 'Instant'}</td>
+                </tr>
+            `).join('');
+        }
+
+        function generatePlaceholder(qty) {
+            let lines = [];
+            for (let i = 1; i <= qty; i++) {
+                lines.push(`cards ${i}`);
+            }
+            return lines.join("\n");
+        }
+
+        function addCardRow() {
+            const container = document.getElementById("cardsContainer");
+            const rowIndex = container.children.length;
+
+            const row = document.createElement("div");
+            row.className = "bg-gray-50 border border-gray-200 rounded-xl p-4 relative space-y-3 shadow-sm card-row";
+            row.setAttribute("data-index", rowIndex);
+
+            row.innerHTML = `
+                ${rowIndex > 0 ? `<button type="button" onclick="removeRow(this)" class="absolute top-3 right-3 bg-red-100 hover:bg-red-200 text-red-600 text-xs px-2.5 py-1 rounded-md font-semibold transition">Remove</button>` : ''}
+                
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Select Gift Card:</label>
+                    <select class="card-select w-full p-2.5 bg-white border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none" onchange="calculateTotals()">
+                        ${getSelectOptionsHTML()}
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Quantity / Codes Count:</label>
+                        <input type="number" class="card-qty w-full p-2.5 bg-white border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none" value="1" min="1" oninput="handleQtyChange(this)">
+                    </div>
+                    <div class="flex items-end justify-end">
+                        <div class="text-xs sm:text-sm font-bold text-gray-800">
+                            Item Total: <span class="text-green-600 text-base font-extrabold">₹<span class="item-total">0</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Card Codes / Links (Har line me ek):</label>
+                    <textarea class="card-codes w-full p-2.5 bg-white border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none" rows="3" placeholder="${generatePlaceholder(1)}"></textarea>
+                </div>
+            `;
+
+            container.appendChild(row);
+            calculateTotals();
+        }
+
+        function getSelectOptionsHTML() {
+            let options = `<option value="">-- Select Gift Card --</option>`;
+            GIFT_CARD_LIST.forEach((card, i) => {
+                options += `<option value="${i}">${card.name} (Rate: ${card.displayValue})</option>`;
+            });
+            return options;
+        }
+
+        function updateAllSelectOptions() {
+            const selects = document.querySelectorAll(".card-select");
+            selects.forEach(select => {
+                const currentVal = select.value;
+                select.innerHTML = getSelectOptionsHTML();
+                select.value = currentVal;
+            });
+            calculateTotals();
+        }
+
+        function handleQtyChange(inputElem) {
+            const row = inputElem.closest(".card-row");
+            const textarea = row.querySelector(".card-codes");
+            const qty = parseInt(inputElem.value) || 1;
+
+            textarea.placeholder = generatePlaceholder(qty);
+            calculateTotals();
+        }
+
+        function removeRow(btn) {
+            btn.parentElement.remove();
+            calculateTotals();
+        }
+
+        function togglePaymentInputs() {
+            const mode = document.getElementById("paymentMode").value;
+            document.getElementById("upiInputBox").classList.add("hidden");
+            document.getElementById("bankInputBox").classList.add("hidden");
+            document.getElementById("usdtInputBox").classList.add("hidden");
+
+            if (mode === "UPI") {
+                document.getElementById("upiInputBox").classList.remove("hidden");
+            } else if (mode === "BANK") {
+                document.getElementById("bankInputBox").classList.remove("hidden");
+            } else if (mode === "USDT") {
+                document.getElementById("usdtInputBox").classList.remove("hidden");
+            }
+        }
+
+        function calculateTotals() {
+            const rows = document.querySelectorAll(".card-row");
+            let grandTotal = 0;
+
+            rows.forEach(row => {
+                const select = row.querySelector(".card-select");
+                const qtyInput = row.querySelector(".card-qty");
+                const itemTotalSpan = row.querySelector(".item-total");
+
+                const selectedIndex = select.value;
+                const qty = parseInt(qtyInput.value) || 0;
+
+                if (selectedIndex !== "") {
+                    const cardObj = GIFT_CARD_LIST[selectedIndex];
+                    const total = cardObj.rate * qty;
+                    itemTotalSpan.innerText = total;
+                    grandTotal += total;
+                } else {
+                    itemTotalSpan.innerText = "0";
+                }
+            });
+
+            document.getElementById("grandTotalText").innerText = grandTotal;
+            return grandTotal;
+        }
+
+        // UPI Validation Formula
+        function isValidUPI(upi) {
+            const upiRegex = /^[\w.-]+@[\w.-]+$/;
+            return upiRegex.test(upi);
+        }
+
+        function sendWhatsApp() {
+            const rows = document.querySelectorAll(".card-row");
+
+            if (rows.length === 0) {
+                Swal.fire({ icon: 'error', title: 'Error!', text: 'Kripya kam se kam ek card select karein!' });
+                return;
+            }
+
+            const today = new Date();
+            const formattedDate = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+
+            let message = `Date- ${formattedDate}\n\n`;
+            let grandTotal = 0;
+            let hasValidCard = false;
+            let validationError = null;
+
+            rows.forEach((row, index) => {
+                if (validationError) return;
+
+                const select = row.querySelector(".card-select");
+                const qty = parseInt(row.querySelector(".card-qty").value) || 0;
+                const codesText = row.querySelector(".card-codes").value.trim();
+
+                if (select.value !== "") {
+                    hasValidCard = true;
+                    const cardObj = GIFT_CARD_LIST[select.value];
+                    const codeLines = codesText ? codesText.split('\n').filter(line => line.trim() !== '') : [];
+
+                    if (codeLines.length !== qty) {
+                        validationError = `Row ${index + 1} (${cardObj.name}): Quantity ${qty} set hai, lekin ${codeLines.length} cards dale gaye hain! Exact ${qty} cards dalein.`;
+                        return;
+                    }
+
+                    const itemTotal = cardObj.rate * qty;
+                    grandTotal += itemTotal;
+
+                    // With Separators and Calculation Line:
+                    message += `====================\n`;
+                    message += `*${cardObj.name} (${qty})*\n\n`;
+                    message += `${codeLines.join('\n')}\n\n`;
+                    message += `*Total -  ₹${cardObj.rate} x ${qty} = ₹${itemTotal}*\n`;
+                    message += `====================\n\n`;
+                }
+            });
+
+            if (validationError) {
+                Swal.fire({ icon: 'warning', title: 'Invalid Card Count!', text: validationError });
+                return;
+            }
+
+            if (!hasValidCard) {
+                Swal.fire({ icon: 'error', title: 'Select Card!', text: 'Kripya kam se kam ek gift card select karein!' });
+                return;
+            }
+
+            const mode = document.getElementById("paymentMode").value;
+            if (!mode) {
+                Swal.fire({ icon: 'warning', title: 'Payment Mode Required!', text: 'Kripya Payment Receive karne ke liye Payment Method select karein!' });
+                return;
+            }
+
+            message += `*Final payment: ₹${grandTotal}*\n\n`;
+
+            if (mode === "UPI") {
+                const upi = document.getElementById("upiId").value.trim();
+                if (!upi) {
+                    Swal.fire({ icon: 'warning', title: 'UPI Missing!', text: 'Kripya apni UPI ID enter karein!' });
+                    return;
+                }
+                if (!isValidUPI(upi)) {
+                    Swal.fire({ icon: 'error', title: 'Invalid UPI ID!', text: 'Kripya sahi UPI ID enter karein (e.g. 9876543210@paytm ya name@upi)!' });
+                    return;
+                }
+                message += `*Payment Mode:* UPI\n*UPI ID:* ${upi}\n\n`;
+            } else if (mode === "BANK") {
+                const bank = document.getElementById("bankDetails").value.trim();
+                if (!bank) {
+                    Swal.fire({ icon: 'warning', title: 'Bank Details Missing!', text: 'Kripya apni Bank Details enter karein!' });
+                    return;
+                }
+                message += `*Payment Mode:* Bank Transfer\n*Bank Details:*\n${bank}\n\n`;
+            } else if (mode === "USDT") {
+                const usdt = document.getElementById("usdtAddress").value.trim();
+                if (!usdt) {
+                    Swal.fire({ icon: 'warning', title: 'USDT Address Missing!', text: 'Kripya apna USDT (BEP20) Address enter karein!' });
+                    return;
+                }
+                message += `*Payment Mode:* USDT (BEP20)\n*Address:* ${usdt}\n\n`;
+            }
+
+            message += `aapka cards submit ho gaya hai kripya payments ka intejar kare payments time 3 se 4 days`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const waUrl = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${encodedMessage}`;
+
+            window.open(waUrl, '_blank');
+        }
+
+        // Header Navigation & Modal Controls
+        document.getElementById('menuBtn').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+
+        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+        // Initial Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            addCardRow();
+            fetchGiftCards();
+        });
+    </script>
+</body>
+</html>
