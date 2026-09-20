@@ -600,8 +600,9 @@ ratesTableBody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-gray
 Rates load ho rahe hain...
 </td></tr>`;
 
+   /* yaha rates.json ke jagah apna json link bhi add kar sakte ho */
 try {
-const response = await fetch('rates.json?v=' + Date.now(),{cache: 'no-store'});
+const response = await fetch('rates.json?v=' + Date.now(),{cache: 'no-store'}); 
 
 if (!response.ok) {
 throw new Error('JSON file load karne mein samasya aayi!');
