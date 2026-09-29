@@ -1,737 +1,3037 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<!DOCTYPE html><html lang="hi" class="scroll-smooth"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Gift Buyer - Sell Gift Cards Instant Cash</title>
-<!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
-<!-- FontAwesome Icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>.gradient-bg {background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);}
-.no-scrollbar::-webkit-scrollbar {display: none;}
-.no-scrollbar {-ms-overflow-style: none;scrollbar-width: none;}
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GiftBuyer - Sell Gift Cards for Instant Cash</title>
+
+<meta name="description"
+content="GiftBuyer helps you sell unused gift cards and vouchers. Check gift card buying rates, payment status and contact GiftBuyer for support.">
+
+<meta name="keywords"
+content="gift card buyer, sell gift card, gift card buyer India, gift card selling, PlayStation gift card sell, Flipkart gift card sell, Roblox gift card sell, Valorant gift card sell, Croma gift card sell, Bata gift card sell, how to sell gift card">
+
+<meta name="author" content="GiftBuyer">
+
+<meta property="og:title"
+content="GiftBuyer - Sell Gift Cards for Instant Cash">
+
+<meta property="og:description"
+content="Sell your unused gift cards with GiftBuyer. Check rates and contact GiftBuyer easily.">
+
+<meta property="og:type" content="website">
+
+<meta property="og:url" content="https://giftbuyer.in/">
+
+<meta property="og:site_name" content="GiftBuyer">
+
+<meta name="theme-color" content="#4f46e5">
+
+<link rel="canonical" href="https://giftbuyer.in/">
+
+<link rel="icon"
+href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%234f46e5'/%3E%3Cpath d='M25 35h50v42H25z' fill='white'/%3E%3Cpath d='M50 35v42M25 48h50' stroke='%234f46e5' stroke-width='5'/%3E%3Cpath d='M48 35c-13-1-19-5-17-12 2-8 15-5 19 12zm4 0c13-1 19-5 19-12-2-8-15-5-19 12z' fill='%23facc15'/%3E%3C/svg%3E">
+
+<!-- Bootstrap 5 -->
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+<!-- Font Awesome -->
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
 
 /* =========================================================
-   GIFT CARD FULL EDGE-TO-EDGE FILL (LIKE RIGHT.JPG)
+   GLOBAL
 ========================================================= */
-#cards-catalog .grid {
-  display: grid !important;
-  grid-template-columns: repeat(2, minmax(0, 1fr)) !important; /* Mobile: strictly 2 boxes */
-  gap: 0.75rem !important;
-  align-items: start !important;
+
+html {
+    scroll-behavior: smooth;
 }
 
-/* Tablet & Desktop Layout */
-@media (min-width: 640px) {
-  #cards-catalog .grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important; /* Desktop auto-fit */
-    gap: 1rem !important;
-  }
+body {
+    margin: 0;
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    background: #f6f7fb;
+    color: #172033;
 }
 
-#cards-catalog .grid > div {
-  width: 100% !important;
-  height: 190px !important;
-  min-height: 190px !important;
-  max-height: 190px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  overflow: hidden !important;
-  box-sizing: border-box !important;
-  border-radius: 0.75rem !important;
+* {
+    box-sizing: border-box;
 }
 
-/* Image container - Full Width */
-#cards-catalog .grid > div > div:first-child {
-  width: 100% !important;
-  height: 145px !important;
-  min-height: 145px !important;
-  max-height: 145px !important;
-  flex: 0 0 145px !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  overflow: hidden !important;
-  background: transparent !important;
+img {
+    display: block;
 }
 
-/* Gift Card Image - Edge to Edge Stretch Fill */
-#cards-catalog .grid > div > div:first-child img {
-  width: 100% !important;
-  height: 100% !important;
-  min-height: 100% !important;
-  max-height: 100% !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  display: block !important;
-  padding: 0 !important;
-  margin: 0 !important;
+a,
+button {
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* Gift Card Name Footer */
-#cards-catalog .grid > div > div:last-child {
-  width: 100% !important;
-  height: 45px !important;
-  min-height: 45px !important;
-  max-height: 45px !important;
-  flex: 0 0 45px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  box-sizing: border-box !important;
-  overflow: hidden !important;
+::selection {
+    background: #4f46e5;
+    color: #fff;
 }
-</style></head>
 
-<body class="bg-gray-50 font-sans text-gray-800 flex flex-col min-h-screen">
+.text-primary-custom {
+    color: #4f46e5 !important;
+}
 
-<!-- =========================================================HEADER========================================================= -->
-<header class="bg-white shadow-sm sticky top-0 z-40">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex justify-between items-center h-16">
-<!-- Logo --><a href="#" class="flex items-center space-x-2">
-<i class="fa-solid fa-credit-card text-indigo-600 text-2xl"></i>
-<span class="text-2xl font-bold text-gray-900">Gift<span class="text-indigo-600">Buyer</span></span>
+.bg-primary-custom {
+    background: #4f46e5 !important;
+}
+
+
+/* =========================================================
+   CONTAINER FULL WIDTH
+========================================================= */
+
+.container-fluid-custom {
+    width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo-mark {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(135deg,#4f46e5,#7c3aed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(79,70,229,.25);
+    flex-shrink: 0;
+}
+
+.logo-mark::before {
+    content: "";
+    width: 25px;
+    height: 19px;
+    background: white;
+    border-radius: 4px;
+    position: absolute;
+    top: 12px;
+    left: 8px;
+}
+
+.logo-mark::after {
+    content: "";
+    width: 2px;
+    height: 20px;
+    background: #4f46e5;
+    position: absolute;
+    top: 11px;
+    left: 19px;
+}
+
+.logo-ribbon {
+    position: absolute;
+    top: 7px;
+    left: 14px;
+    width: 12px;
+    height: 8px;
+    border: 2px solid #facc15;
+    border-radius: 50%;
+    transform: rotate(-8deg);
+    z-index: 3;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header {
+    min-height: 70px;
+    background: rgba(255,255,255,.95);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid #e8eaf0;
+    position: sticky;
+    top: 0;
+    z-index: 1050;
+}
+
+.header-inner {
+    min-height: 70px;
+}
+
+.brand {
+    text-decoration: none;
+    color: #111827;
+}
+
+.brand-name {
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -.5px;
+}
+
+.brand-name span {
+    color: #4f46e5;
+}
+
+.desktop-nav .nav-link {
+    color: #596273;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 9px;
+    padding: 9px 12px !important;
+    transition: .25s ease;
+}
+
+.desktop-nav .nav-link:hover,
+.desktop-nav .nav-link.active {
+    color: #4f46e5;
+    background: #f1f2ff;
+}
+
+.header-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 9px 15px;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: .25s ease;
+}
+
+.login-btn {
+    color: #4f46e5;
+    border: 1px solid #cfd2ff;
+    background: #fff;
+}
+
+.login-btn:hover {
+    background: #f1f2ff;
+    color: #4338ca;
+    transform: translateY(-2px);
+}
+
+.register-btn {
+    background: #4f46e5;
+    color: #fff;
+    box-shadow: 0 5px 14px rgba(79,70,229,.2);
+}
+
+.register-btn:hover {
+    background: #4338ca;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.mobile-menu-btn {
+    border: 0;
+    background: #f3f4f6;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    color: #374151;
+}
+
+.mobile-menu {
+    display: none;
+    background: #fff;
+    border-top: 1px solid #eee;
+    box-shadow: 0 12px 25px rgba(0,0,0,.06);
+}
+
+.mobile-menu.show {
+    display: block;
+}
+
+.mobile-nav-link {
+    display: block;
+    padding: 11px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #4b5563;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.mobile-nav-link:hover {
+    background: #f1f2ff;
+    color: #4f46e5;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    width: 100%;
+    min-height: 410px;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(129,140,248,.45),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #111827 0%,
+            #312e81 52%,
+            #4f46e5 100%
+        );
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 330px;
+    height: 330px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.06);
+    right: -80px;
+    top: -100px;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.05);
+    left: -80px;
+    bottom: -100px;
+}
+
+.hero-inner {
+    min-height: 410px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    max-width: 760px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.18);
+    color: #e0e7ff;
+    padding: 7px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 17px;
+    backdrop-filter: blur(8px);
+}
+
+.hero-title {
+    font-size: clamp(34px,5vw,60px);
+    line-height: 1.05;
+    letter-spacing: -2px;
+    font-weight: 900;
+    color: #fff;
+    margin: 0 0 17px;
+}
+
+.hero-title span {
+    color: #facc15;
+}
+
+.hero-text {
+    color: #dbe4ff;
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 680px;
+    margin-bottom: 25px;
+}
+
+.hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 19px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: .25s ease;
+}
+
+.hero-primary {
+    background: #fff;
+    color: #4338ca;
+}
+
+.hero-primary:hover {
+    color: #4338ca;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0,0,0,.2);
+}
+
+.hero-secondary {
+    background: rgba(255,255,255,.1);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.25);
+}
+
+.hero-secondary:hover {
+    color: #fff;
+    background: rgba(255,255,255,.18);
+    transform: translateY(-3px);
+}
+
+.hero-floating-card {
+    position: absolute;
+    right: 6%;
+    top: 50%;
+    transform: translateY(-50%) rotate(4deg);
+    width: 265px;
+    height: 160px;
+    border-radius: 20px;
+    background: linear-gradient(135deg,#fff,#e0e7ff);
+    box-shadow: 0 25px 60px rgba(0,0,0,.25);
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    animation: floatCard 4s ease-in-out infinite;
+}
+
+.hero-floating-card small {
+    color: #6b7280;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.hero-floating-card strong {
+    font-size: 22px;
+    color: #312e81;
+}
+
+.hero-card-line {
+    height: 7px;
+    width: 70%;
+    background: #c7d2fe;
+    border-radius: 20px;
+}
+
+@keyframes floatCard {
+
+    0%,100% {
+        transform: translateY(-50%) rotate(4deg);
+    }
+
+    50% {
+        transform: translateY(calc(-50% - 10px)) rotate(1deg);
+    }
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main-container {
+    width: 100%;
+    padding-top: 25px;
+    padding-bottom: 45px;
+}
+
+
+/* =========================================================
+   QUICK ACTIONS
+========================================================= */
+
+.quick-btn {
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: .25s ease;
+}
+
+.quick-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(15,23,42,.1);
+}
+
+.quick-primary {
+    background: #4f46e5;
+    color: #fff;
+}
+
+.quick-primary:hover {
+    color: #fff;
+    background: #4338ca;
+}
+
+.quick-light {
+    background: #fff;
+    color: #303b53;
+    border: 1px solid #e4e7ee;
+}
+
+.quick-light:hover {
+    color: #303b53;
+    border-color: #c7c9ff;
+    background: #f8f8ff;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section-title {
+    font-size: 25px;
+    font-weight: 850;
+    letter-spacing: -.5px;
+    color: #111827;
+    margin: 0;
+}
+
+.section-subtitle {
+    font-size: 13px;
+    color: #737b8c;
+    margin: 5px 0 0;
+}
+
+
+/* =========================================================
+   GIFT CARD
+========================================================= */
+
+.gift-card {
+    width: 100%;
+    height: 190px;
+    background: #fff;
+    border: 1px solid #e3e6ed;
+    border-radius: 13px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+}
+
+.gift-card:hover {
+    transform: translateY(-6px);
+    border-color: #c7c9ff;
+    box-shadow: 0 15px 30px rgba(31,41,55,.12);
+}
+
+.gift-card:active {
+    transform: scale(.97);
+}
+
+.gift-image {
+    width: 100%;
+    height: 145px;
+    min-height: 145px;
+    overflow: hidden;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gift-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform .4s ease;
+}
+
+.gift-card:hover .gift-image img {
+    transform: scale(1.05);
+}
+
+.gift-name {
+    height: 45px;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+    background: #eff6ff;
+    border-top: 1px solid #dbeafe;
+    font-size: 11px;
+    font-weight: 800;
+    color: #172033;
+    text-transform: uppercase;
+    letter-spacing: .35px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   RATES
+========================================================= */
+
+.rates-section {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 18px rgba(15,23,42,.04);
+}
+
+.rates-header {
+    padding: 19px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid #edf0f4;
+    background: linear-gradient(to right,#fff,#f8f8ff);
+}
+
+.rate-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rate-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: #eef2ff;
+    color: #4f46e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rates-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 850;
+    color: #111827;
+}
+
+.rates-subtitle {
+    font-size: 11px;
+    color: #7b8494;
+    margin-top: 2px;
+}
+
+.rate-date {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #ecfdf5;
+    border: 1px solid #bbf7d0;
+    color: #15803d;
+    padding: 7px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.rates-table-wrap {
+    overflow-x: auto;
+}
+
+.rates-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rates-table th {
+    padding: 12px 18px;
+    background: #f8fafc;
+    color: #667085;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    text-align: left;
+}
+
+.rates-table td {
+    padding: 13px 18px;
+    border-top: 1px solid #eef0f3;
+    font-size: 13px;
+}
+
+.rates-table tbody tr:hover {
+    background: #fafaff;
+}
+
+.rate-brand {
+    font-weight: 800;
+    color: #1f2937;
+}
+
+.rate-value {
+    font-weight: 900;
+    color: #16a34a;
+}
+
+.rate-time {
+    color: #6b7280;
+}
+
+.rates-note {
+    font-size: 10px;
+    color: #9ca3af;
+    padding: 0 18px 15px;
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faq-section,
+.about-section {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+    padding: 22px;
+    margin-bottom: 30px;
+}
+
+.faq-item {
+    border: 1px solid #e7e9ee;
+    border-radius: 10px;
+    margin-bottom: 9px;
+    overflow: hidden;
+    transition: .2s;
+}
+
+.faq-item:hover {
+    border-color: #cfd2ff;
+}
+
+.faq-summary {
+    padding: 14px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 750;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    list-style: none;
+}
+
+.faq-summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-answer {
+    padding: 0 14px 14px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #687386;
+}
+
+.faq-arrow {
+    transition: .25s;
+}
+
+details[open] .faq-arrow {
+    transform: rotate(180deg);
+}
+
+.about-content {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #687386;
+}
+
+.about-content h3 {
+    font-size: 15px;
+    color: #202939;
+    margin: 18px 0 5px;
+}
+
+.about-content p {
+    margin: 7px 0;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    background: #111827;
+    color: #9ca3af;
+    padding: 40px 0 18px;
+}
+
+.footer-brand {
+    font-size: 20px;
+    font-weight: 900;
+    color: #fff;
+}
+
+.footer-description {
+    font-size: 11px;
+    line-height: 1.7;
+    max-width: 310px;
+}
+
+.footer-title {
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    margin-bottom: 12px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.footer-links a {
+    color: #9ca3af;
+    font-size: 11px;
+    text-decoration: none;
+    transition: .2s;
+}
+
+.footer-links a:hover {
+    color: #818cf8;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 7px;
+    margin-top: 15px;
+}
+
+.social {
+    width: 31px;
+    height: 31px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: #1f2937;
+    color: #9ca3af;
+    text-decoration: none;
+    transition: .2s;
+}
+
+.social:hover {
+    background: #4f46e5;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #273244;
+    text-align: center;
+    font-size: 10px;
+    color: #6b7280;
+}
+
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+.whatsapp-float {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 53px;
+    height: 53px;
+    border-radius: 50%;
+    background: #22c55e;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    text-decoration: none;
+    z-index: 1100;
+    box-shadow: 0 8px 25px rgba(34,197,94,.35);
+    transition: .25s;
+    animation: whatsappPulse 2.5s infinite;
+}
+
+.whatsapp-float:hover {
+    background: #16a34a;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+@keyframes whatsappPulse {
+
+    0% {
+        box-shadow: 0 0 0 0 rgba(34,197,94,.45);
+    }
+
+    70% {
+        box-shadow: 0 0 0 13px rgba(34,197,94,0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(34,197,94,0);
+    }
+
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   CARD CLICK
+========================================================= */
+
+.card-clicked {
+    transform: scale(.96) !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1199px) {
+
+    .hero-floating-card {
+        right: 3%;
+        width: 225px;
+    }
+
+}
+
+@media (max-width: 991px) {
+
+    .desktop-nav,
+    .header-actions {
+        display: none !important;
+    }
+
+    .mobile-menu-btn {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-floating-card {
+        display: none;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    .container-fluid-custom {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .hero {
+        min-height: 400px;
+    }
+
+    .hero-inner {
+        min-height: 400px;
+    }
+
+    .hero-title {
+        font-size: 35px;
+        letter-spacing: -1.5px;
+    }
+
+    .hero-text {
+        font-size: 14px;
+        line-height: 1.65;
+    }
+
+    .hero-buttons {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .hero-btn {
+        width: 100%;
+    }
+
+    .main-container {
+        padding-top: 18px;
+        padding-bottom: 35px;
+    }
+
+    .quick-btn {
+        min-height: 52px;
+        font-size: 11px;
+        padding: 7px 5px;
+    }
+
+    .section-title {
+        font-size: 21px;
+    }
+
+    .gift-card {
+        height: 185px;
+    }
+
+    .gift-image {
+        height: 140px;
+        min-height: 140px;
+    }
+
+    .gift-name {
+        height: 45px;
+        min-height: 45px;
+        font-size: 10px;
+    }
+
+    .rates-header {
+        padding: 14px;
+        align-items: flex-start;
+    }
+
+    .rates-title {
+        font-size: 15px;
+    }
+
+    .rate-date {
+        font-size: 9px;
+        padding: 6px 8px;
+    }
+
+    .rates-table th,
+    .rates-table td {
+        padding: 11px 10px;
+    }
+
+    .rates-table th {
+        font-size: 9px;
+    }
+
+    .rates-table td {
+        font-size: 11px;
+    }
+
+    .faq-section,
+    .about-section {
+        padding: 16px;
+    }
+
+    .footer {
+        padding-top: 32px;
+    }
+
+    .footer-bottom {
+        margin-top: 25px;
+    }
+
+    .whatsapp-float {
+        right: 14px;
+        bottom: 14px;
+        width: 50px;
+        height: 50px;
+        font-size: 23px;
+    }
+
+}
+
+@media (max-width: 575px) {
+
+    .site-header,
+    .header-inner {
+        min-height: 62px;
+    }
+
+    .header-inner {
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+
+    .logo-mark {
+        width: 37px;
+        height: 37px;
+    }
+
+    .brand-name {
+        font-size: 19px;
+    }
+
+    .quick-actions {
+        --bs-gutter-x: .5rem;
+    }
+
+    .quick-btn {
+        font-size: 10px;
+        gap: 4px;
+    }
+
+    .gift-card {
+        height: 180px;
+    }
+
+    .gift-image {
+        height: 135px;
+        min-height: 135px;
+    }
+
+    .gift-name {
+        height: 45px;
+        min-height: 45px;
+    }
+
+    .rates-header {
+        flex-direction: column;
+    }
+
+    .rate-date {
+        align-self: flex-start;
+    }
+
+    .footer-grid-mobile > div:first-child {
+        margin-bottom: 5px;
+    }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .brand-name {
+        font-size: 17px;
+    }
+
+    .hero-title {
+        font-size: 31px;
+    }
+
+    .quick-btn {
+        font-size: 9px;
+    }
+
+    .gift-card {
+        height: 165px;
+    }
+
+    .gift-image {
+        height: 120px;
+        min-height: 120px;
+    }
+
+}
+
+</style>
+
+
+<!-- =========================================================
+     JSON-LD SEO
+========================================================= -->
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@graph":[
+{
+"@type":"WebSite",
+"@id":"https://giftbuyer.in/#website",
+"url":"https://giftbuyer.in/",
+"name":"GiftBuyer",
+"description":"GiftBuyer is an online gift card buying and selling platform.",
+"potentialAction":{
+"@type":"SearchAction",
+"target":"https://giftbuyer.in/?q={search_term_string}",
+"query-input":"required name=search_term_string"
+}
+},
+{
+"@type":"Organization",
+"@id":"https://giftbuyer.in/#organization",
+"name":"GiftBuyer",
+"url":"https://giftbuyer.in/",
+"logo":"https://giftbuyer.in/logo.png"
+},
+{
+"@type":"WebPage",
+"@id":"https://giftbuyer.in/#webpage",
+"url":"https://giftbuyer.in/",
+"name":"GiftBuyer - Sell Gift Cards for Instant Cash",
+"isPartOf":{
+"@id":"https://giftbuyer.in/#website"
+},
+"description":"Sell unused gift cards and vouchers with GiftBuyer. Check buying rates and contact support."
+},
+{
+"@type":"FAQPage",
+"@id":"https://giftbuyer.in/#faq",
+"mainEntity":[
+{
+"@type":"Question",
+"name":"How can I sell a gift card?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Select a supported gift card and contact GiftBuyer through the available selling channel."
+}
+},
+{
+"@type":"Question",
+"name":"How can I check gift card rates?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"GiftBuyer displays current buying rates in the Gift Buyer Buying Rates section."
+}
+},
+{
+"@type":"Question",
+"name":"Which gift cards are supported?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Supported gift cards are displayed in the GiftBuyer gift card catalog."
+}
+}
+]
+}
+]
+}
+</script>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="site-header">
+
+<div class="container-fluid px-3 px-lg-4">
+
+<div class="header-inner d-flex align-items-center gap-3">
+
+<a href="/" class="brand d-flex align-items-center gap-2">
+
+<div class="logo-mark">
+<div class="logo-ribbon"></div>
+</div>
+
+<div class="brand-name">
+Gift<span>Buyer</span>
+</div>
+
 </a>
 
-<!-- Navigation Links --><nav class="hidden md:flex space-x-4 lg:space-x-8 text-sm font-medium text-gray-700">
-<a href="#hero" class="hover:text-indigo-600 transition">Home</a>
-<a href="#cards-catalog" class="hover:text-indigo-600 transition">Gift Cards</a>
-<a href="#rates" class="hover:text-indigo-600 transition">Today's Rates</a>
-<a href="#faq" class="hover:text-indigo-600 transition">FAQ</a>
-<a href="#article-box" class="hover:text-indigo-600 transition">About</a>
+
+<nav class="desktop-nav d-flex align-items-center gap-1 ms-2">
+
+<a href="#home" class="nav-link active">
+Home
+</a>
+
+<a href="#cards" class="nav-link">
+Gift Cards
+</a>
+
+<a href="#rates" class="nav-link">
+Today's Rates
+</a>
+
+<a href="#contact" class="nav-link">
+Contact
+</a>
+
+<a href="#faq" class="nav-link">
+FAQ
+</a>
+
+<a href="#about" class="nav-link">
+About
+</a>
+
 </nav>
 
-<!-- Auth Buttons --><div class="hidden md:flex items-center space-x-2 lg:space-x-3">
-<button onclick="openModal('loginModal')" class="text-indigo-600 border border-indigo-600 hover:bg-indigo-50 px-3 lg:px-4 py-1.5 rounded-lg text-sm font-semibold transition">Login</button>
-<button onclick="openModal('registerModal')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 lg:px-4 py-1.5 rounded-lg text-sm font-semibold shadow transition">Register</button>
+
+<div class="header-actions d-flex align-items-center gap-2 ms-auto">
+
+<a href="login.html"
+class="header-btn login-btn">
+Login
+</a>
+
+<a href="register.html"
+class="header-btn register-btn">
+Register
+</a>
+
 </div>
 
-<!-- Mobile Hamburger Button --><div class="flex md:hidden items-center">
-<button id="menuBtn" class="text-gray-700 focus:outline-none p-2 text-xl">
+
+<button
+id="mobileMenuBtn"
+class="mobile-menu-btn d-none ms-auto"
+aria-label="Open menu">
+
 <i class="fa-solid fa-bars"></i>
+
 </button>
-</div>
-</div>
+
 </div>
 
-<!-- Mobile Menu --><div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200 px-4 pt-2 pb-4 space-y-2">
-<a href="#hero" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">Home</a>
-<a href="#cards-catalog" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">Gift Cards</a>
-<a href="#rates" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">Today's Rates</a>
-<a href="#faq" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">FAQ</a>
-<a href="#article-box" class="block text-gray-700 font-medium hover:text-indigo-600 py-1">About</a>
 
-<div class="pt-2 border-t border-gray-100 flex gap-2">
-<button onclick="openModal('loginModal')" class="w-1/2 text-center text-indigo-600 border border-indigo-600 py-2 rounded-lg font-semibold text-sm">Login</button>
-<button onclick="openModal('registerModal')" class="w-1/2 text-center bg-indigo-600 text-white py-2 rounded-lg font-semibold text-sm">Register</button>
+<div id="mobileMenu" class="mobile-menu">
+
+<a href="#home"
+class="mobile-nav-link">
+Home
+</a>
+
+<a href="#cards"
+class="mobile-nav-link">
+Gift Cards
+</a>
+
+<a href="#rates"
+class="mobile-nav-link">
+Today's Rates
+</a>
+
+<a href="#contact"
+class="mobile-nav-link">
+Contact
+</a>
+
+<a href="#faq"
+class="mobile-nav-link">
+FAQ
+</a>
+
+<a href="#about"
+class="mobile-nav-link">
+About
+</a>
+
+<div class="d-flex gap-2 mt-2">
+
+<a href="login.html"
+class="header-btn login-btn flex-fill text-center">
+Login
+</a>
+
+<a href="register.html"
+class="header-btn register-btn flex-fill text-center">
+Register
+</a>
+
 </div>
+
 </div>
+
+</div>
+
 </header>
 
 
-<!-- =========================================================WHATSAPP FLOATING BUTTON========================================================= -->
-<a href="https://wa.me/919876543210?text=Hello%20GiftBuyer,%20mujhe%20apna%20gift%20card%20sell%20karna%20hai." target="_blank" class="fixed bottom-5 right-5 z-50 bg-green-500 hover:bg-green-600 text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-transform hover:scale-110 active:scale-95">
-<i class="fa-brands fa-whatsapp text-2xl"></i>
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section id="home" class="hero">
+
+<div class="container-fluid-custom">
+
+<div class="hero-inner d-flex align-items-center">
+
+<div class="hero-content reveal">
+
+<div class="hero-badge">
+
+<i class="fa-solid fa-bolt"></i>
+
+Easy Gift Card Selling
+
+</div>
+
+
+<h1 class="hero-title">
+
+Sell Your Gift Cards.<br>
+
+Get <span>Better Value.</span>
+
+</h1>
+
+
+<p class="hero-text">
+
+Have an unused gift card or voucher?
+Check today's buying rates,
+choose your card and connect with GiftBuyer
+for a simple and fast selling experience.
+
+</p>
+
+
+<div class="hero-buttons d-flex flex-wrap gap-2">
+
+<a href="#cards"
+class="hero-btn hero-primary">
+
+<i class="fa-solid fa-credit-card"></i>
+
+Sell Gift Card
+
 </a>
 
 
-<!-- =========================================================BANNER SLIDER========================================================= -->
-<section id="hero" class="relative bg-gray-900 overflow-hidden">
-<div id="slider" class="flex transition-transform duration-700 ease-in-out w-full">
+<a href="#rates"
+class="hero-btn hero-secondary">
 
-<div class="min-w-full relative h-48 sm:h-64 md:h-80 lg:h-96 flex-shrink-0">
-<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Banner 1">
+<i class="fa-solid fa-chart-line"></i>
+
+Check Today's Rates
+
+</a>
+
 </div>
 
-<div class="min-w-full relative h-48 sm:h-64 md:h-80 lg:h-96 flex-shrink-0">
-<img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Banner 2">
 </div>
 
-<div class="min-w-full relative h-48 sm:h-64 md:h-80 lg:h-96 flex-shrink-0">
-<img src="https://images.unsplash.com/photo-1550745165-9bc0b2527263?w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Banner 3">
+
+<div class="hero-floating-card">
+
+<small>GIFTBUYER</small>
+
+<div class="hero-card-line"></div>
+
+<strong>Gift Card</strong>
+
+<div class="d-flex justify-content-between">
+
+<span style="font-size:10px;color:#6b7280;">
+SAFE • SIMPLE
+</span>
+
+<i class="fa-solid fa-gift"
+style="color:#4f46e5;">
+</i>
+
 </div>
 
-<div class="min-w-full relative h-48 sm:h-64 md:h-80 lg:h-96 flex-shrink-0">
-<img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Banner 4">
-</div>
 </div>
 
-<button onclick="prevSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/70 transition z-10">
-<i class="fa-solid fa-chevron-left"></i>
-</button>
+</div>
 
-<button onclick="nextSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/70 transition z-10">
-<i class="fa-solid fa-chevron-right"></i>
-</button>
+</div>
+
 </section>
 
 
-<!-- =========================================================MAIN CONTAINER========================================================= -->
-<div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 py-6 flex-grow w-full space-y-8">
-<div class="flex flex-col lg:flex-row gap-8">
+<!-- =========================================================
+     MAIN
+========================================================= -->
 
-<!-- MAIN CONTENT --><main class="w-full lg:w-3/4 space-y-8">
+<main class="main-container">
 
-<!-- QUICK ACTION BUTTONS --><div class="grid grid-cols-3 gap-1.5 sm:gap-4">
-<a href="#cards-catalog" class="flex flex-row items-center justify-center gap-1 sm:gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 sm:py-3 px-1 sm:px-4 rounded-xl shadow-md text-[10px] xs:text-xs sm:text-sm transition active:scale-95 whitespace-nowrap">
-<i class="fa-solid fa-bolt text-yellow-300 text-xs sm:text-base"></i>
+<div class="container-fluid-custom">
+
+
+<!-- =========================================================
+     QUICK ACTIONS
+========================================================= -->
+
+<div class="row g-2 mb-4 reveal">
+
+<div class="col-4">
+
+<a href="#cards"
+class="quick-btn quick-primary w-100">
+
+<i class="fa-solid fa-bolt"></i>
+
 <span>Sell Gift Card</span>
+
 </a>
 
-<a href="status-check.html" class="flex flex-row items-center justify-center gap-1 sm:gap-2 bg-white hover:bg-indigo-50 text-indigo-950 font-bold py-2 sm:py-3 px-1 sm:px-4 rounded-xl border border-indigo-200 shadow-sm text-[10px] xs:text-xs sm:text-sm transition active:scale-95 whitespace-nowrap">
-<i class="fa-solid fa-magnifying-glass text-indigo-600 text-xs sm:text-base"></i>
-<span>Check Status</span>
+</div>
+
+
+<div class="col-4">
+
+<a href="status-check.html"
+class="quick-btn quick-light w-100">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<span>Payment Status</span>
+
 </a>
 
-<a href="#rates" class="flex flex-row items-center justify-center gap-1 sm:gap-2 bg-white hover:bg-indigo-50 text-indigo-950 font-bold py-2 sm:py-3 px-1 sm:px-4 rounded-xl border border-indigo-200 shadow-sm text-[10px] xs:text-xs sm:text-sm transition active:scale-95 whitespace-nowrap">
-<i class="fa-solid fa-list-check text-green-600 text-xs sm:text-base"></i>
+</div>
+
+
+<div class="col-4">
+
+<a href="#rates"
+class="quick-btn quick-light w-100">
+
+<i class="fa-solid fa-tags"></i>
+
 <span>Price List</span>
+
 </a>
+
+</div>
+
 </div>
 
 
-<!-- =====================================================GIFT CARD CATALOG===================================================== -->
-<section id="cards-catalog">
+<!-- =========================================================
+     GIFT CARDS
+========================================================= -->
 
-<div class="flex justify-between items-center mb-6 border-b pb-3">
+<section id="cards"
+class="mb-4 reveal">
+
+<div class="d-flex align-items-end justify-content-between gap-3 mb-3">
+
 <div>
-<h2 class="text-xl sm:text-2xl font-bold text-gray-900">Supported Gift Cards</h2>
-<p class="text-xs sm:text-sm text-gray-500">Select brand & sell instantly</p>
-</div>
+
+<h2 class="section-title">
+Supported Gift Cards
+</h2>
+
+<p class="section-subtitle">
+Choose your gift card and check its current buying rate.
+</p>
+
 </div>
 
-<div class="grid">
-
-<!-- CARD 1 (SONY PLAYSTATION) --><div onclick="sellCardWhatsApp('Sony Playstation')" class="cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col justify-between text-center hover:shadow-md transition">
-<div class="w-full p-0 m-0 flex items-center justify-center overflow-hidden">
-<img src="https://media.buysellvouchers.com/images/product-images/Gift_cards-PlayStation_network_aka_psn.png" alt="Sony Playstation" class="w-full h-full object-cover p-0 m-0 block">
 </div>
 
-<div class="bg-sky-50 py-2.5 px-2 text-xs font-bold text-gray-900 border-t border-sky-100 uppercase tracking-wide truncate">
+
+<div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-3">
+
+
+<!-- CARD 1 -->
+
+<div class="col">
+
+<div class="gift-card">
+
+<div class="gift-image">
+
+<img
+src="https://media.buysellvouchers.com/images/product-images/Gift_cards-PlayStation_network_aka_psn.png"
+alt="Sony Playstation Gift Card"
+loading="lazy">
+
+</div>
+
+<div class="gift-name">
 Sony Playstation
 </div>
+
+</div>
+
 </div>
 
 
-<!-- CARD 2 --><div onclick="sellCardWhatsApp('Flipkart')" class="cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col justify-between text-center hover:shadow-md transition">
-<div class="w-full p-0 m-0 flex items-center justify-center overflow-hidden">
-<img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Flipkart_logo.svg" alt="Flipkart" class="w-full h-full object-cover p-0 m-0 block">
+<!-- CARD 2 -->
+
+<div class="col">
+
+<div class="gift-card">
+
+<div class="gift-image">
+
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Flipkart_logo.svg"
+alt="Flipkart Gift Card"
+loading="lazy">
+
 </div>
 
-<div class="bg-sky-50 py-2.5 px-2 text-xs font-bold text-gray-900 border-t border-sky-100 uppercase tracking-wide truncate">
+<div class="gift-name">
 Flipkart
 </div>
+
+</div>
+
 </div>
 
 
-<!-- CARD 3 --><div onclick="sellCardWhatsApp('Valorant')" class="cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col justify-between text-center hover:shadow-md transition">
-<div class="w-full p-0 m-0 flex items-center justify-center overflow-hidden">
-<img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Valorant_logo_-_Vector.svg" alt="Valorant" class="w-full h-full object-cover p-0 m-0 block">
+<!-- CARD 3 -->
+
+<div class="col">
+
+<div class="gift-card">
+
+<div class="gift-image">
+
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Valorant_logo_-_Vector.svg"
+alt="Valorant Gift Card"
+loading="lazy">
+
 </div>
 
-<div class="bg-sky-50 py-2.5 px-2 text-xs font-bold text-gray-900 border-t border-sky-100 uppercase tracking-wide truncate">
+<div class="gift-name">
 Valorant
 </div>
+
+</div>
+
 </div>
 
 
-<!-- CARD 4 --><div onclick="sellCardWhatsApp('Bata')" class="cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col justify-between text-center hover:shadow-md transition">
-<div class="w-full p-0 m-0 flex items-center justify-center overflow-hidden">
-<img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Bata_logo.svg" alt="Bata" class="w-full h-full object-cover p-0 m-0 block">
+<!-- CARD 4 -->
+
+<div class="col">
+
+<div class="gift-card">
+
+<div class="gift-image">
+
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Bata_logo.svg"
+alt="Bata Gift Card"
+loading="lazy">
+
 </div>
 
-<div class="bg-sky-50 py-2.5 px-2 text-xs font-bold text-gray-900 border-t border-sky-100 uppercase tracking-wide truncate">
+<div class="gift-name">
 Bata
 </div>
+
+</div>
+
 </div>
 
 
-<!-- CARD 5 --><div onclick="sellCardWhatsApp('Roblox')" class="cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col justify-between text-center hover:shadow-md transition">
-<div class="w-full p-0 m-0 flex items-center justify-center overflow-hidden">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_2022.svg" alt="Roblox" class="w-full h-full object-cover p-0 m-0 block">
+<!-- CARD 5 -->
+
+<div class="col">
+
+<div class="gift-card">
+
+<div class="gift-image">
+
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_2022.svg"
+alt="Roblox Gift Card"
+loading="lazy">
+
 </div>
 
-<div class="bg-sky-50 py-2.5 px-2 text-xs font-bold text-gray-900 border-t border-sky-100 uppercase tracking-wide truncate">
+<div class="gift-name">
 Roblox
 </div>
+
+</div>
+
 </div>
 
 
-<!-- CARD 6 --><div onclick="sellCardWhatsApp('Croma')" class="cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col justify-between text-center hover:shadow-md transition">
-<div class="w-full p-0 m-0 flex items-center justify-center overflow-hidden">
-<img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Croma_Logo.png" alt="Croma" class="w-full h-full object-cover p-0 m-0 block">
+<!-- CARD 6 -->
+
+<div class="col">
+
+<div class="gift-card">
+
+<div class="gift-image">
+
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/2/23/Croma_Logo.png"
+alt="Croma Gift Card"
+loading="lazy">
+
 </div>
 
-<div class="bg-sky-50 py-2.5 px-2 text-xs font-bold text-gray-900 border-t border-sky-100 uppercase tracking-wide truncate">
+<div class="gift-name">
 Croma
 </div>
+
 </div>
+
 </div>
+
+
+<!--
+=========================================================
+NEW CARD TEMPLATE
+
+<div class="col">
+
+<div class="gift-card">
+
+<div class="gift-image">
+
+<img
+src="YOUR-IMAGE-URL"
+alt="Amazon Gift Card"
+loading="lazy">
+
+</div>
+
+<div class="gift-name">
+Amazon
+</div>
+
+</div>
+
+</div>
+
+=========================================================
+-->
+
+</div>
+
 </section>
 
 
-<!-- =====================================================RATES===================================================== -->
-<section id="rates" class="bg-white p-4 sm:p-6 rounded-xl shadow-sm border border-gray-200">
+<!-- =========================================================
+     RATES
+========================================================= -->
 
-<div class="mb-4 border-b pb-3 flex justify-between items-center flex-wrap gap-2">
+<section id="rates"
+class="rates-section reveal">
+
+
+<div class="rates-header">
+
+<div class="rate-title-wrap">
+
+<div class="rate-icon">
+
+<i class="fa-solid fa-chart-line"></i>
+
+</div>
+
 <div>
-<div class="flex items-center gap-2 flex-wrap">
-<h2 class="text-xl font-bold text-gray-900">Gift Buyer Buying Rates</h2>
 
-<span id="rates-date-badge" class="bg-green-100 text-green-800 border border-green-200 text-xs font-semibold px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
-<i class="fa-regular fa-clock text-green-600"></i>
-<span id="rates-last-updated">Date Fetching...</span>
+<h2 class="rates-title">
+Gift Buyer Buying Rates
+</h2>
+
+<div class="rates-subtitle">
+Current gift card payout rates
+</div>
+
+</div>
+
+</div>
+
+
+<div class="rate-date">
+
+<i class="fa-regular fa-clock"></i>
+
+<span id="rates-last-updated">
+Loading...
 </span>
+
 </div>
 
-<p class="text-xs text-gray-500 mt-0.5">Live updated payout percentages for your gift cards</p>
-</div>
 </div>
 
-<div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
+
+<div class="rates-table-wrap">
+
+<table class="rates-table">
+
 <thead>
-<tr class="bg-gray-100 border-b text-gray-700 text-xs sm:text-sm">
-<th class="p-2.5 font-semibold">Card Name</th>
-<th class="p-2.5 font-semibold">Payout Rate</th>
-<th class="p-2.5 font-semibold">Est. Speed</th>
+
+<tr>
+
+<th>
+Gift Card
+</th>
+
+<th>
+Payout Rate
+</th>
+
+<th>
+Estimated Speed
+</th>
+
 </tr>
+
 </thead>
 
-<tbody id="rates-table-body" class="divide-y divide-gray-200 text-xs sm:text-sm">
+
+<tbody id="rates-table-body">
+
+<tr>
+
+<td colspan="3"
+style="text-align:center;color:#9ca3af;padding:25px;">
+
+Rates load ho rahe hain...
+
+</td>
+
+</tr>
+
 </tbody>
+
 </table>
+
 </div>
 
-<p class="text-[11px] text-gray-400 mt-3">* Payout rates depend on market conditions and card denomination.</p>
+
+<div class="rates-note">
+
+* Buying rates may change according to market conditions,
+card denomination and verification.
+
+</div>
+
 </section>
+
+
+<!-- =========================================================
+     FAQ
+========================================================= -->
+
+<section id="faq"
+class="faq-section reveal">
+
+<div class="mb-3">
+
+<h2 class="section-title">
+Frequently Asked Questions
+</h2>
+
+<p class="section-subtitle">
+Common questions about GiftBuyer.
+</p>
+
+</div>
+
+
+<details class="faq-item">
+
+<summary class="faq-summary">
+
+<span>
+How can I sell my gift card?
+</span>
+
+<i class="fa-solid fa-chevron-down faq-arrow"></i>
+
+</summary>
+
+<div class="faq-answer">
+
+Select the gift card you have and contact GiftBuyer support
+through the available contact channel. Our team will guide
+you through the verification and selling process.
+
+</div>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary class="faq-summary">
+
+<span>
+How can I check today's gift card rates?
+</span>
+
+<i class="fa-solid fa-chevron-down faq-arrow"></i>
+
+</summary>
+
+<div class="faq-answer">
+
+You can check the latest available buying rates in the
+Gift Buyer Buying Rates section on this page.
+
+</div>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary class="faq-summary">
+
+<span>
+Which gift cards are supported?
+</span>
+
+<i class="fa-solid fa-chevron-down faq-arrow"></i>
+
+</summary>
+
+<div class="faq-answer">
+
+Supported brands are displayed in the Gift Cards section.
+The supported list can change over time.
+
+</div>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary class="faq-summary">
+
+<span>
+How can I check my payment status?
+</span>
+
+<i class="fa-solid fa-chevron-down faq-arrow"></i>
+
+</summary>
+
+<div class="faq-answer">
+
+Use the Payment Status button from the website navigation
+to open the payment status page.
+
+</div>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary class="faq-summary">
+
+<span>
+Do you buy gaming gift cards?
+</span>
+
+<i class="fa-solid fa-chevron-down faq-arrow"></i>
+
+</summary>
+
+<div class="faq-answer">
+
+GiftBuyer may support selected gaming gift cards such as
+PlayStation, Roblox and Valorant. Please check the current
+supported gift card list before contacting us.
+
+</div>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary class="faq-summary">
+
+<span>
+Do you buy retail gift cards?
+</span>
+
+<i class="fa-solid fa-chevron-down faq-arrow"></i>
+
+</summary>
+
+<div class="faq-answer">
+
+GiftBuyer may support selected retail gift cards such as
+Flipkart, Bata and Croma. Availability and buying rates
+may change, so always check the latest information.
+
+</div>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary class="faq-summary">
+
+<span>
+How is the gift card price decided?
+</span>
+
+<i class="fa-solid fa-chevron-down faq-arrow"></i>
+
+</summary>
+
+<div class="faq-answer">
+
+The buying price can depend on the gift card brand,
+denomination, region, validity, demand and verification.
+Always check the latest rate before selling.
+
+</div>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary class="faq-summary">
+
+<span>
+What information is required to sell a gift card?
+</span>
+
+<i class="fa-solid fa-chevron-down faq-arrow"></i>
+
+</summary>
+
+<div class="faq-answer">
+
+Depending on the card and verification process, GiftBuyer
+may ask for relevant gift card details and payment details.
+Never share sensitive information outside the official
+GiftBuyer support channel.
+
+</div>
+
+</details>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section id="about"
+class="about-section reveal">
+
+<div class="mb-3">
+
+<h2 class="section-title">
+About GiftBuyer
+</h2>
+
+<p class="section-subtitle">
+A simple platform for gift card buyers and sellers.
+</p>
+
+</div>
+
+
+<div class="about-content">
+
+<p>
+
+<strong>GiftBuyer</strong> is an online platform focused on
+gift card buying and selling. The website allows users to
+explore supported gift cards and check available buying rates.
+
+</p>
+
+
+<h3>
+Why use GiftBuyer?
+</h3>
+
+<p>
+
+GiftBuyer is designed to make the gift card selling process
+simple and easy to understand. Users can check supported
+cards, view rates and contact support from one place.
+
+</p>
+
+
+<h3>
+Check rates before selling
+</h3>
+
+<p>
+
+Gift card buying rates can change. Always check the latest
+rate shown on the website before starting a transaction.
+
+</p>
+
+
+<h3>
+Supported Gift Card Categories
+</h3>
+
+<p>
+
+GiftBuyer may support both gaming and retail gift cards,
+including selected PlayStation, Roblox, Valorant, Flipkart,
+Bata and Croma gift cards.
+
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section id="contact"
+class="about-section reveal">
+
+<div class="mb-3">
+
+<h2 class="section-title">
+Contact GiftBuyer
+</h2>
+
+<p class="section-subtitle">
+Need help with a gift card? Contact our support team.
+</p>
+
+</div>
+
+
+<div class="row g-3">
+
+<div class="col-md-6">
+
+<a
+href="mailto:support@giftbuyer.in"
+class="text-decoration-none">
+
+<div
+class="p-4 rounded-4 border bg-light h-100">
+
+<div
+class="d-flex align-items-center gap-3">
+
+<div
+style="
+width:45px;
+height:45px;
+border-radius:12px;
+background:#eef2ff;
+color:#4f46e5;
+display:flex;
+align-items:center;
+justify-content:center;
+">
+
+<i class="fa-solid fa-envelope"></i>
+
+</div>
+
+<div>
+
+<div
+style="
+font-size:12px;
+color:#6b7280;
+font-weight:700;
+">
+
+EMAIL SUPPORT
+
+</div>
+
+<div
+style="
+font-size:14px;
+font-weight:800;
+color:#111827;
+">
+
+support@giftbuyer.in
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+
+<div class="col-md-6">
+
+<a
+href="https://wa.me/919934363941"
+target="_blank"
+class="text-decoration-none">
+
+<div
+class="p-4 rounded-4 border bg-light h-100">
+
+<div
+class="d-flex align-items-center gap-3">
+
+<div
+style="
+width:45px;
+height:45px;
+border-radius:12px;
+background:#dcfce7;
+color:#16a34a;
+display:flex;
+align-items:center;
+justify-content:center;
+">
+
+<i class="fa-brands fa-whatsapp"></i>
+
+</div>
+
+<div>
+
+<div
+style="
+font-size:12px;
+color:#6b7280;
+font-weight:700;
+">
+
+WHATSAPP SUPPORT
+
+</div>
+
+<div
+style="
+font-size:14px;
+font-weight:800;
+color:#111827;
+">
+
++91 99343 63941
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+</div>
+
 </main>
 
 
-<!-- =====================================================SIDEBAR===================================================== -->
-<aside class="w-full lg:w-1/4 space-y-6">
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
-<div class="bg-gradient-to-br from-indigo-600 to-purple-700 text-white rounded-xl p-5 shadow-md">
-<h3 class="text-lg font-bold mb-2 flex items-center gap-2">
-<i class="fa-solid fa-bolt text-yellow-300"></i>
-Direct Instant Sell
-</h3>
+<footer class="footer">
 
-<p class="text-xs text-indigo-100 mb-4">
-WhatsApp par card details bhejein aur instant payment paayein.
-</p>
+<div class="container-fluid-custom">
 
-<a href="https://wa.me/919876543210?text=Hello,%20mujhe%20gift%20card%20sell%20karna%20hai" target="_blank" class="block text-center bg-green-500 hover:bg-green-600 text-white font-bold py-2.5 rounded-lg text-sm shadow transition">
-<i class="fa-brands fa-whatsapp mr-1 text-base"></i>
-Sell via WhatsApp
-</a>
+<div class="row g-4 footer-grid-mobile">
+
+
+<div class="col-12 col-md-6 col-lg-4">
+
+<div class="footer-brand d-flex align-items-center gap-2">
+
+<div class="logo-mark">
+
+<div class="logo-ribbon"></div>
+
 </div>
 
-
-<div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200">
-<h4 class="text-sm font-bold text-gray-900 mb-3 uppercase tracking-wider">
-Instant Payout Methods
-</h4>
-
-<div class="grid grid-cols-2 gap-2 text-xs font-semibold text-gray-600">
-<div class="bg-gray-100 p-2 rounded text-center border">Google Pay</div>
-<div class="bg-gray-100 p-2 rounded text-center border">PhonePe</div>
-<div class="bg-gray-100 p-2 rounded text-center border">Paytm UPI</div>
-<div class="bg-gray-100 p-2 rounded text-center border">Bank Transfer</div>
-</div>
-</div>
-
-
-<div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200 text-center">
-<i class="fa-solid fa-headset text-3xl text-indigo-600 mb-2"></i>
-<h4 class="text-base font-bold text-gray-900">Need Help?</h4>
-<p class="text-xs text-gray-500 mt-1 mb-3">Live chat support is available 24/7</p>
-<p class="text-xs font-semibold text-indigo-600">+91 99343 63941</p>
-</div>
-</aside>
-</div>
-
-
-<!-- =====================================================FAQ===================================================== -->
-<section id="faq" class="bg-white p-5 sm:p-6 rounded-xl shadow-sm border border-gray-200">
-
-<div class="border-b pb-3 mb-4">
-<h2 class="text-xl sm:text-2xl font-bold text-gray-900 flex items-center gap-2">
-<i class="fa-solid fa-circle-question text-indigo-600"></i>
-Frequently Asked Questions (FAQ)
-</h2>
-
-<p class="text-xs sm:text-sm text-gray-500">
-Gift card bechne se jude aam sawalon ke jawab
-</p>
-</div>
-
-<div class="space-y-3">
-
-<details class="group bg-gray-50 p-3.5 rounded-lg cursor-pointer border border-gray-200/60">
-<summary class="font-semibold text-sm text-gray-800 flex justify-between items-center list-none">
-<span>Q1. Gift Card bechne ka process kya hai?</span>
-<i class="fa-solid fa-chevron-down text-xs text-gray-500 transition-transform group-open:rotate-180"></i>
-</summary>
-
-<p class="text-xs sm:text-sm text-gray-600 mt-2.5 pt-2 border-t border-gray-200">
-Apna card select karein, WhatsApp icon par click karke hamare saath card ka code aur screenshot share karein. Card verify hote hi aapko instant payment mil jayegi.
-</p>
-</details>
-
-
-<details class="group bg-gray-50 p-3.5 rounded-lg cursor-pointer border border-gray-200/60">
-<summary class="font-semibold text-sm text-gray-800 flex justify-between items-center list-none">
-<span>Q2. Payment kitni der me milti hai?</span>
-<i class="fa-solid fa-chevron-down text-xs text-gray-500 transition-transform group-open:rotate-180"></i>
-</summary>
-
-<p class="text-xs sm:text-sm text-gray-600 mt-2.5 pt-2 border-t border-gray-200">
-Card validation ke baad 5 se 15 minute ke andar aapke pasandida method (UPI, GPay, PhonePe, Paytm, ya Bank Transfer) se payment bhej di jaati hai.
-</p>
-</details>
-
-
-<details class="group bg-gray-50 p-3.5 rounded-lg cursor-pointer border border-gray-200/60">
-<summary class="font-semibold text-sm text-gray-800 flex justify-between items-center list-none">
-<span>Q3. Kya mera gift card information safe hai?</span>
-<i class="fa-solid fa-chevron-down text-xs text-gray-500 transition-transform group-open:rotate-180"></i>
-</summary>
-
-<p class="text-xs sm:text-sm text-gray-600 mt-2.5 pt-2 border-t border-gray-200">
-Haan, GiftBuyer ek 100% trusted aur verified platform hai. Aapki privacy aur data bilkul surakshit rehti hai.
-</p>
-</details>
-
-
-<details class="group bg-gray-50 p-3.5 rounded-lg cursor-pointer border border-gray-200/60">
-<summary class="font-semibold text-sm text-gray-800 flex justify-between items-center list-none">
-<span>Q4. Konsi gift cards accept ki jaati hain?</span>
-<i class="fa-solid fa-chevron-down text-xs text-gray-500 transition-transform group-open:rotate-180"></i>
-</summary>
-
-<p class="text-xs sm:text-sm text-gray-600 mt-2.5 pt-2 border-t border-gray-200">
-Hum gaming vouchers (PlayStation, Valorant, Roblox) aur retail vouchers (Flipkart, Bata, Croma) sahit sabhi major gift cards accept karte hain.
-</p>
-</details>
-</div>
-</section>
-
-
-<!-- =====================================================ARTICLE===================================================== -->
-<section id="article-box" class="bg-white p-5 sm:p-6 rounded-xl shadow-sm border border-gray-200">
-
-<h2 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 border-b pb-2 flex items-center gap-2">
-<i class="fa-solid fa-newspaper text-indigo-600"></i>
-About GiftBuyer - Online Gift Card Selling Platform
-</h2>
-
-<article class="prose max-w-none text-xs sm:text-sm text-gray-600 space-y-3 leading-relaxed">
-
-<p>
-Welcome to <strong>GiftBuyer</strong>, India's premier platform to convert unused gift cards and digital vouchers into instant cash. Whether you have gaming gift cards like PlayStation, Roblox, Valorant, or retail shopping vouchers from Flipkart, Bata, and Croma, we offer the best payout rates with instant UPI and Bank transfers.
-</p>
-
-<h3 class="text-sm font-bold text-gray-800 mt-3 mb-1">
-Why Sell Gift Cards to Us?
-</h3>
-
-<p>
-Selling gift cards online can often be risky. GiftBuyer ensures a transparent, fast, and secure redemption process. With 24/7 customer support and live dynamic rates updated daily, you always get maximum value for your vouchers without any hidden charges.
-</p>
-
-<h3 class="text-sm font-bold text-gray-800 mt-3 mb-1">
-How Our Instant Cash Transfer Works
-</h3>
-
-<p>
-Simply select your brand, send the code via our direct WhatsApp channel, and get your payout verified within minutes. Our seamless payout integration ensures money reaches your GPay, PhonePe, or Bank Account instantly.
-</p>
-</article>
-</section>
-</div>
-
-
-<!-- =========================================================FOOTER========================================================= -->
-<footer class="bg-gray-900 text-gray-300 pt-10 pb-6 border-t border-gray-800">
-
-<div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-sm">
-
-<!-- Brand --><div>
-<span class="text-xl font-bold text-white flex items-center gap-2 mb-2">
-<i class="fa-solid fa-credit-card text-indigo-500"></i>
-Gift<span class="text-indigo-500">Buyer</span>
+Gift<span style="color:#818cf8;">
+Buyer
 </span>
 
-<p class="text-xs text-gray-400 leading-relaxed mb-4">
-India's trusted Gift Buyer (GiftBuyer) platform for buying and selling gaming and retail vouchers for instant cash.
+</div>
+
+
+<p class="footer-description">
+
+GiftBuyer is an online gift card platform where users can
+explore supported gift cards, check buying rates and contact
+support.
+
 </p>
 
-<div class="flex items-center space-x-3">
 
-<a href="https://facebook.com" target="_blank" aria-label="Facebook" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-indigo-600 text-gray-400 hover:text-white flex items-center justify-center transition">
-<i class="fa-brands fa-facebook-f text-sm"></i>
+<div class="footer-socials">
+
+<a
+href="#"
+class="social"
+aria-label="Facebook">
+
+<i class="fa-brands fa-facebook-f"></i>
+
 </a>
 
-<a href="https://instagram.com" target="_blank" aria-label="Instagram" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-indigo-600 text-gray-400 hover:text-white flex items-center justify-center transition">
-<i class="fa-brands fa-instagram text-sm"></i>
+<a
+href="#"
+class="social"
+aria-label="Instagram">
+
+<i class="fa-brands fa-instagram"></i>
+
 </a>
 
-<a href="https://telegram.org" target="_blank" aria-label="Telegram" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-indigo-600 text-gray-400 hover:text-white flex items-center justify-center transition">
-<i class="fa-brands fa-telegram text-sm"></i>
+<a
+href="#"
+class="social"
+aria-label="Telegram">
+
+<i class="fa-brands fa-telegram"></i>
+
 </a>
 
-<a href="https://youtube.com" target="_blank" aria-label="YouTube" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-indigo-600 text-gray-400 hover:text-white flex items-center justify-center transition">
-<i class="fa-brands fa-youtube text-sm"></i>
+<a
+href="#"
+class="social"
+aria-label="YouTube">
+
+<i class="fa-brands fa-youtube"></i>
+
 </a>
 
-<a href="https://twitter.com" target="_blank" aria-label="Twitter" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-indigo-600 text-gray-400 hover:text-white flex items-center justify-center transition">
-<i class="fa-brands fa-x-twitter text-sm"></i>
+</div>
+
+</div>
+
+
+<div class="col-6 col-md-3 col-lg-2">
+
+<div class="footer-title">
+Quick Links
+</div>
+
+<div class="footer-links">
+
+<a href="#home">
+Home
 </a>
+
+<a href="#cards">
+Gift Cards
+</a>
+
+<a href="#rates">
+Today's Rates
+</a>
+
+<a href="status-check.html">
+Payment Status
+</a>
+
+<a href="#contact">
+Contact Us
+</a>
+
 </div>
-</div>
 
-
-<!-- Quick Links --><div>
-<h4 class="text-white font-semibold mb-3 text-xs uppercase tracking-wider border-b border-gray-800 pb-1">Quick Links</h4>
-
-<ul class="space-y-2 text-xs text-gray-400">
-<li><a href="#hero" class="hover:text-indigo-400 transition">Home</a></li>
-<li><a href="#cards-catalog" class="hover:text-indigo-400 transition">Supported Cards</a></li>
-<li><a href="#cards-catalog" class="hover:text-indigo-400 transition">Sell Gift Card</a></li>
-<li><a href="#rates" class="hover:text-indigo-400 transition">Buying Rates</a></li>
-<li><a href="#faq" class="hover:text-indigo-400 transition">FAQ</a></li>
-</ul>
-</div>
-
-
-<!-- Legal --><div>
-<h4 class="text-white font-semibold mb-3 text-xs uppercase tracking-wider border-b border-gray-800 pb-1">Legal & Support</h4>
-
-<ul class="space-y-2 text-xs text-gray-400">
-<li><a href="#article-box" class="hover:text-indigo-400 transition">About Gift Buyer</a></li>
-<li><a href="#contact" class="hover:text-indigo-400 transition">Contact Us</a></li>
-<li><a href="#terms" class="hover:text-indigo-400 transition">Terms & Conditions</a></li>
-<li><a href="#privacy" class="hover:text-indigo-400 transition">Privacy Policy</a></li>
-</ul>
 </div>
 
 
-<!-- Contact --><div>
-<h4 class="text-white font-semibold mb-3 text-xs uppercase tracking-wider border-b border-gray-800 pb-1">Get In Touch</h4>
+<div class="col-6 col-md-3 col-lg-2">
 
-<ul class="space-y-2 text-xs text-gray-400">
-
-<li class="flex items-center gap-2">
-<i class="fa-solid fa-envelope text-indigo-400"></i>
-<span>support@giftbuyer.com</span>
-</li>
-
-<li class="flex items-center gap-2">
-<i class="fa-solid fa-phone text-indigo-400"></i>
-<span>+91 99343 63941</span>
-</li>
-</ul>
-</div>
+<div class="footer-title">
+Legal
 </div>
 
-<div class="border-t border-gray-800 text-center pt-4 text-xs text-gray-500">
-© 2026 GiftBuyer (Gift Buyer). All Rights Reserved.
+<div class="footer-links">
+
+<a href="about.html">
+About Us
+</a>
+
+<a href="terms.html">
+Terms & Conditions
+</a>
+
+<a href="privacy.html">
+Privacy Policy
+</a>
+
+<a href="refund-policy.html">
+Refund Policy
+</a>
+
+<a href="disclaimer.html">
+Disclaimer
+</a>
+
 </div>
+
+</div>
+
+
+<div class="col-12 col-md-6 col-lg-4">
+
+<div class="footer-title">
+Contact
+</div>
+
+<div class="footer-links">
+
+<a href="mailto:support@giftbuyer.in">
+
+<i class="fa-solid fa-envelope me-1"></i>
+
+support@giftbuyer.in
+
+</a>
+
+
+<a
+href="https://wa.me/919934363941"
+target="_blank">
+
+<i class="fa-brands fa-whatsapp me-1"></i>
+
++91 99343 63941
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+© 2026 GiftBuyer.in — All Rights Reserved.
+
+</div>
+
+</div>
+
 </footer>
 
 
-<!-- =========================================================LOGIN MODAL========================================================= -->
-<div id="loginModal" class="fixed inset-0 bg-black/60 hidden z-50 flex items-center justify-center p-4">
+<!-- =========================================================
+     WHATSAPP FLOAT
+========================================================= -->
 
-<div class="bg-white rounded-xl shadow-xl w-full max-w-sm p-5 relative">
+<a
+href="https://wa.me/919934363941?text=Hello%20GiftBuyer,%20mujhe%20gift%20card%20ke%20baare%20me%20help%20chahiye."
+target="_blank"
+class="whatsapp-float"
+aria-label="Chat with GiftBuyer on WhatsApp">
 
-<button onclick="closeModal('loginModal')" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600">
-<i class="fa-solid fa-xmark text-lg"></i>
-</button>
+<i class="fa-brands fa-whatsapp"></i>
 
-<h3 class="text-xl font-bold mb-3 text-gray-900">Login</h3>
-
-<form class="space-y-3" onsubmit="event.preventDefault(); closeModal('loginModal');">
-
-<input type="text" placeholder="Mobile / Email" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
-
-<input type="password" placeholder="Password" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
-
-<button type="submit" class="w-full bg-indigo-600 text-white font-bold py-2 rounded-lg text-sm shadow">
-Login
-</button>
-</form>
-</div>
-</div>
+</a>
 
 
-<!-- =========================================================REGISTER MODAL========================================================= -->
-<div id="registerModal" class="fixed inset-0 bg-black/60 hidden z-50 flex items-center justify-center p-4">
-
-<div class="bg-white rounded-xl shadow-xl w-full max-w-sm p-5 relative">
-
-<button onclick="closeModal('registerModal')" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600">
-<i class="fa-solid fa-xmark text-lg"></i>
-</button>
-
-<h3 class="text-xl font-bold mb-3 text-gray-900">Register</h3>
-
-<form class="space-y-3" onsubmit="event.preventDefault(); closeModal('registerModal');">
-
-<input type="text" placeholder="Full Name" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
-
-<input type="tel" placeholder="Mobile Number" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
-
-<input type="password" placeholder="Password" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-indigo-600">
-
-<button type="submit" class="w-full bg-indigo-600 text-white font-bold py-2 rounded-lg text-sm shadow">
-Register
-</button>
-</form>
-</div>
-</div>
+<!-- Bootstrap JS -->
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
 
 
-<!-- =========================================================JAVASCRIPT========================================================= -->
 <script>
 
-/* =====================================================RATES TABLE===================================================== */
-async function renderRatesTable() {
-const ratesTableBody = document.getElementById('rates-table-body');
-const ratesLastUpdated = document.getElementById('rates-last-updated');
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
-ratesTableBody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-gray-500">
-Rates load ho rahe hain...
-</td></tr>`;
+const mobileMenuBtn =
+document.getElementById("mobileMenuBtn");
 
-   /* yaha rates.json ke jagah apna json link bhi add kar sakte ho */
-try {
-const response = await fetch('rates.json?v=' + Date.now(),{cache: 'no-store'}); 
+const mobileMenu =
+document.getElementById("mobileMenu");
 
-if (!response.ok) {
-throw new Error('JSON file load karne mein samasya aayi!');
+
+mobileMenuBtn.addEventListener(
+"click",
+function(){
+
+mobileMenu.classList.toggle("show");
+
+const icon =
+mobileMenuBtn.querySelector("i");
+
+if(
+mobileMenu.classList.contains("show")
+){
+
+icon.classList.remove(
+"fa-bars"
+);
+
+icon.classList.add(
+"fa-xmark"
+);
+
+}else{
+
+icon.classList.remove(
+"fa-xmark"
+);
+
+icon.classList.add(
+"fa-bars"
+);
+
 }
 
-const data = await response.json();
+});
+
+
+document
+.querySelectorAll(".mobile-nav-link")
+.forEach(function(link){
+
+link.addEventListener(
+"click",
+function(){
+
+mobileMenu.classList.remove(
+"show"
+);
+
+const icon =
+mobileMenuBtn.querySelector("i");
+
+icon.classList.remove(
+"fa-xmark"
+);
+
+icon.classList.add(
+"fa-bars"
+);
+
+});
+
+});
+
+
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
+
+const navLinks =
+document.querySelectorAll(".nav-link");
+
+const sections =
+document.querySelectorAll("section[id]");
+
+
+window.addEventListener(
+"scroll",
+function(){
+
+let current = "";
+
+sections.forEach(
+function(section){
+
+const sectionTop =
+section.offsetTop - 110;
+
+if(
+window.scrollY >= sectionTop
+){
+
+current =
+section.getAttribute(
+"id"
+);
+
+}
+
+});
+
+
+navLinks.forEach(
+function(link){
+
+link.classList.remove(
+"active"
+);
+
+if(
+link.getAttribute("href") ===
+"#" + current
+){
+
+link.classList.add(
+"active"
+);
+
+}
+
+});
+
+});
+
+
+/* =========================================================
+   RATES JSON
+========================================================= */
+
+async function renderRatesTable(){
+
+const tableBody =
+document.getElementById(
+"rates-table-body"
+);
+
+const lastUpdated =
+document.getElementById(
+"rates-last-updated"
+);
+
+
+tableBody.innerHTML = `
+
+<tr>
+
+<td
+colspan="3"
+style="
+text-align:center;
+color:#9ca3af;
+padding:25px;
+">
+
+<i class="fa-solid fa-spinner fa-spin"></i>
+
+&nbsp;
+
+Rates load ho rahe hain...
+
+</td>
+
+</tr>
+
+`;
+
+
+try{
+
+const response =
+await fetch(
+"rates.json?v=" +
+Date.now(),
+{
+cache:"no-store"
+}
+);
+
+
+if(!response.ok){
+
+throw new Error(
+"rates.json not found"
+);
+
+}
+
+
+const data =
+await response.json();
+
 
 let cardsData = [];
-let dateString = "";
 
-if (Array.isArray(data)) {
-cardsData = data;
-dateString = data[0]?.date || data[0]?.updated_at || "Today";
-} else {
-cardsData = data.cards || [];
-dateString = data.last_updated || data.date || "Today";
+let dateString =
+"Today";
+
+
+if(
+Array.isArray(data)
+){
+
+cardsData =
+data;
+
+dateString =
+data[0]?.date ||
+data[0]?.updated_at ||
+"Today";
+
+}else{
+
+cardsData =
+data.cards || [];
+
+dateString =
+data.last_updated ||
+data.date ||
+"Today";
+
 }
 
-if (ratesLastUpdated) {
-ratesLastUpdated.innerText = dateString;
-}
 
-ratesTableBody.innerHTML = '';
+lastUpdated.innerText =
+dateString;
 
-cardsData.forEach(card => {
 
-const rateRowHTML = `
-<tr class="hover:bg-gray-50 transition">
-<td class="p-2.5 font-semibold text-gray-900">${card.name}</td>
-<td class="p-2.5 text-green-600 font-bold">${card.value}</td>
-<td class="p-2.5 text-gray-500">${card.time}</td>
-</tr>
-`;
+if(
+cardsData.length === 0
+){
 
-ratesTableBody.insertAdjacentHTML('beforeend',rateRowHTML);
-});
+tableBody.innerHTML = `
 
-} catch (error) {
-
-console.error('Error:',error);
-
-ratesTableBody.innerHTML = `
 <tr>
-<td colspan="3" class="p-4 text-center text-red-500">
-Rates load nahi ho sake.Kripya rates.json file check karein.
+
+<td
+colspan="3"
+style="
+text-align:center;
+color:#9ca3af;
+padding:25px;
+">
+
+No rates available.
+
 </td>
+
 </tr>
+
 `;
 
-if (ratesLastUpdated) {
-ratesLastUpdated.innerText = "Updated Today";
-}
-}
+return;
+
 }
 
 
-/* =====================================================WHATSAPP SELL===================================================== */
-function sellCardWhatsApp(cardName) {
-const adminNumber = "919876543210";
+tableBody.innerHTML =
+"";
 
-const text = encodeURIComponent(`Hello GiftBuyer, mujhe *${cardName}* sell karna hai. Please rate aur process bataiye.`);
 
-window.open(`https://wa.me/${adminNumber}?text=${text}`,'_blank');
+cardsData.forEach(
+function(card){
+
+const row =
+document.createElement(
+"tr"
+);
+
+
+row.innerHTML = `
+
+<td class="rate-brand">
+
+${escapeHTML(
+card.name || "-"
+)}
+
+</td>
+
+<td class="rate-value">
+
+${escapeHTML(
+card.value || "-"
+)}
+
+</td>
+
+<td class="rate-time">
+
+${escapeHTML(
+card.time || "-"
+)}
+
+</td>
+
+`;
+
+
+tableBody.appendChild(
+row
+);
+
+});
+
+}catch(error){
+
+console.error(error);
+
+
+tableBody.innerHTML = `
+
+<tr>
+
+<td
+colspan="3"
+style="
+text-align:center;
+color:#dc2626;
+padding:25px;
+">
+
+<i
+class="fa-solid fa-circle-exclamation">
+</i>
+
+&nbsp;
+
+Rates load nahi ho sake.
+Please rates.json check karein.
+
+</td>
+
+</tr>
+
+`;
+
+
+lastUpdated.innerText =
+"Currently unavailable";
+
+}
+
 }
 
 
-/* =====================================================MOBILE MENU===================================================== */
-document.getElementById('menuBtn').addEventListener('click', () => {
+/* =========================================================
+   HTML ESCAPE
+========================================================= */
 
-document.getElementById('mobileMenu').classList.toggle('hidden');
+function escapeHTML(value){
+
+return String(value)
+
+.replace(
+/&/g,
+"&amp;"
+)
+
+.replace(
+/</g,
+"&lt;"
+)
+
+.replace(
+/>/g,
+"&gt;"
+)
+
+.replace(
+/"/g,
+"&quot;"
+)
+
+.replace(
+/'/g,
+"&#039;"
+);
+
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements =
+document.querySelectorAll(
+".reveal"
+);
+
+
+const observer =
+new IntersectionObserver(
+function(entries){
+
+entries.forEach(
+function(entry){
+
+if(
+entry.isIntersecting
+){
+
+entry.target.classList.add(
+"show"
+);
+
+observer.unobserve(
+entry.target
+);
+
+}
+
+});
+
+},
+{
+threshold:.08
+}
+);
+
+
+revealElements.forEach(
+function(element){
+
+observer.observe(
+element
+);
 
 });
 
 
-/* =====================================================MODALS===================================================== */
-function openModal(id) {
-document.getElementById(id).classList.remove('hidden');
+/* =========================================================
+   LOAD RATES
+========================================================= */
+
+document.addEventListener(
+"DOMContentLoaded",
+renderRatesTable
+);
+
+
+/* =========================================================
+   GIFT CARD CLICK
+========================================================= */
+
+document
+.querySelectorAll(".gift-card")
+.forEach(function(card){
+
+card.addEventListener(
+"click",
+function(){
+
+card.classList.add(
+"card-clicked"
+);
+
+
+setTimeout(
+function(){
+
+card.classList.remove(
+"card-clicked"
+);
+
+},
+180
+);
+
+});
+
+});
+
+
+/* =========================================================
+   CLOSE MOBILE MENU ON OUTSIDE CLICK
+========================================================= */
+
+document.addEventListener(
+"click",
+function(event){
+
+if(
+!mobileMenu.contains(event.target) &&
+!mobileMenuBtn.contains(event.target)
+){
+
+mobileMenu.classList.remove(
+"show"
+);
+
+const icon =
+mobileMenuBtn.querySelector("i");
+
+icon.classList.remove(
+"fa-xmark"
+);
+
+icon.classList.add(
+"fa-bars"
+);
+
 }
 
-function closeModal(id) {
-document.getElementById(id).classList.add('hidden');
-}
+});
 
 
-/* =====================================================SLIDER===================================================== */
-const slider = document.getElementById('slider');
+/* =========================================================
+   UPDATE ACTIVE NAV ON LOAD
+========================================================= */
 
-function nextSlide() {
-
-slider.style.transition = 'transform 0.7s ease-in-out';
-
-slider.style.transform = 'translateX(-100%)';
-
-setTimeout(() => {
-
-slider.style.transition = 'none';
-
-slider.appendChild(slider.firstElementChild);
-
-slider.style.transform = 'translateX(0)';
-
-}, 700);
-}
-
-
-function prevSlide() {
-
-slider.style.transition = 'none';
-
-slider.insertBefore(slider.lastElementChild,slider.firstElementChild);
-
-slider.style.transform = 'translateX(-100%)';
-
-setTimeout(() => {
-
-slider.style.transition = 'transform 0.7s ease-in-out';
-
-slider.style.transform = 'translateX(0)';
-
-}, 20);
-}
-
-
-/* =====================================================AUTO SLIDER===================================================== */
-setInterval(nextSlide,3500);
-
-
-/* =====================================================LOAD RATES===================================================== */
-document.addEventListener('DOMContentLoaded',renderRatesTable);
+window.dispatchEvent(
+new Event("scroll")
+);
 
 </script>
-</body></html>
+
+
+</body>
+
+</html>
